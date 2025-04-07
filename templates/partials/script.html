@@ -1,0 +1,180 @@
+{% load static %}
+
+<!-- jQuery -->
+<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+    
+<!-- Bootstrap Core JS -->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Daterangepikcer JS -->
+<script src="{% static 'assets/js/moment.js' %}"></script>
+<script src="{% static 'assets/plugins/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+<!-- Feather Icon JS -->
+<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+<!-- Slimscroll JS -->
+<script src="{% static 'assets/js/jquery.slimscroll.min.js' %}"></script>
+
+<!-- Alertify JS -->
+<script src="{% static 'assets/plugins/lightbox/glightbox.min.js' %}"></script>
+<script src="{% static 'assets/plugins/lightbox/lightbox.js' %}"></script>
+
+<!-- Rangeslider JS -->
+<script src="{% static 'assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'assets/plugins/ion-rangeslider/js/custom-rangeslider.js' %}"></script>
+
+<!-- Clipboard JS -->
+<script src="{% static 'assets/plugins/clipboard/clipboard.min.js' %}"></script>
+
+<!-- Dragula JS -->
+<script src="{% static 'assets/plugins/dragula/js/dragula.min.js' %}"></script>
+<script src="{% static 'assets/plugins/dragula/js/drag-drop.min.js' %}"></script>
+<script src="{% static 'assets/plugins/dragula/js/draggable-cards.js' %}"></script>
+
+<!-- Stickynote JS -->
+<script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'assets/plugins/stickynote/sticky.js' %}"></script>
+
+<!-- Plyr JS -->
+<script src="{% static 'assets/plugins/scrollbar/scrollbar.min.js' %}"></script>
+<script src="{% static 'assets/plugins/scrollbar/custom-scroll.js' %}"></script>
+
+<!-- Stickynote JS -->
+<script src="{% static 'assets/plugins/countup/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/plugins/countup/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/plugins/countup/jquery.missofis-countdown.js' %}"></script>
+
+<!-- Chart JS -->
+{% if request.path == '/chart-morris' %}
+<script src="{% static 'assets/plugins/morris/raphael-min.js' %}"></script>
+<script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+<script src="{% static 'assets/plugins/morris/chart-data.js' %}"></script>
+{% endif %}
+
+<!-- Chart JS -->
+{% if request.path == '/chart-js' %}
+<script src="{% static 'assets/plugins/chartjs/chart.min.js' %}"></script>
+<script src="{% static 'assets/plugins/chartjs/chart-data.js' %}"></script>
+{% endif %}
+
+<!-- Chart JS -->
+{% if request.path == '/chart-flot' %}
+<script src="{% static 'assets/plugins/flot/jquery.flot.js' %}"></script>
+<script src="{% static 'assets/plugins/flot/jquery.flot.fillbetween.js' %}"></script>
+<script src="{% static 'assets/plugins/flot/jquery.flot.pie.js' %}"></script>
+<script src="{% static 'assets/plugins/flot/chart-data.js' %}"></script>
+{% endif %}
+
+<!-- Mask JS -->
+<script src="{% static 'assets/js/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'assets/js/mask.js' %}"></script>
+
+{% if request.path == '/form-validation' %}
+<script src="{% static 'assets/js/form-validation.js' %}"></script>
+{% endif %}
+
+{% if request.path == '/form-wizard' %}
+<!-- Wizard JS -->
+<script src="{% static 'assets/plugins/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}"></script>
+<script src="{% static 'assets/plugins/twitter-bootstrap-wizard/prettify.js' %}"></script>
+<script src="{% static 'assets/plugins/twitter-bootstrap-wizard/form-wizard.js' %}"></script>
+
+{% endif %}
+
+<!-- Fileupload JS -->
+<script src="{% static 'assets/plugins/fileupload/fileupload.min.js' %}"></script>
+
+<!-- Chart JS -->
+<script src="{% static 'assets/plugins/peity/jquery.peity.min.js' %}"></script>
+<script src="{% static 'assets/plugins/peity/chart-data.js' %}"></script>
+
+<!-- Chart JS -->
+<script src="{% static 'assets/plugins/c3-chart/d3.v5.min.js' %}"></script>
+<script src="{% static 'assets/plugins/c3-chart/c3.min.js' %}"></script>
+<script src="{% static 'assets/plugins/c3-chart/chart-data.js' %}"></script>
+
+<!-- Calendar JS -->
+<script src="{% static 'assets/plugins/fullcalendar/calendar.js' %}"></script>
+<script src="{% static 'assets/plugins/fullcalendar/calendar-data.js' %}"></script>
+
+<!-- Sticky Sidebar JS -->
+<script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+<script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+<!-- Slimscroll JS -->
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+{% if request.path == '/chat' or request.path == '/plugins' or request.path == '/video-call' %}
+<!-- Swiper JS -->
+<script src="{% static 'assets/plugins/swiper/swiper.min.js' %}"></script>
+{% endif %}
+
+<!-- FancyBox JS -->
+{% if request.path == '/chat' or request.path == '/plugins' %}
+<script src="{% static 'assets/plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+{% endif %}
+
+<!-- Select2 JS -->
+<script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+
+{% if request.path == '/add-invoice' or request.path == '/edit-invoice' %}
+<!-- Summernote JS -->
+<script src="{% static 'assets/plugins/summernote/summernote-lite.min.js' %}"></script>
+{% endif %}
+
+<!-- Summernote JS -->
+<script src="{% static 'assets/plugins/summernote/summernote-bs4.min.js' %}"></script>
+
+<!-- Mobile Input -->
+<script src="{% static 'assets/plugins/intltelinput/js/intlTelInput.js' %}"></script>
+
+  <!-- Sweetalert 2 -->
+<script src="{% static 'assets/plugins/sweetalert/sweetalert2.all.min.js' %}"></script>
+<script src="{% static 'assets/plugins/sweetalert/sweetalerts.min.js' %}"></script>
+
+<!-- Chart JS -->
+<script src="{% static 'assets/plugins/apexchart/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/plugins/apexchart/chart-data.js' %}"></script>
+
+<!-- Datatable JS -->
+<script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/js/dataTables.bootstrap5.min.js' %}"></script>
+
+{% if request.path == '/teacher-dashboard' or request.path == '/notes' or request.path == '/file-manager' or request.path == '/student-dashboard' %}
+<!-- Owl Carousel JS -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+{% endif %}
+
+{% if request.path == '/file-manager' %}
+<script src="{% static 'assets/js/plyr-js.js' %}"></script>
+{% endif %}
+
+{% if request.path == '/index' or request.path == '/layout-default' or request.path == '/layout-mini' or request.path == '/layout-rtl' or request.path == '/layout-box' or request.path == '/layout-dark' or request.path == '/video-call' %}
+<!-- Owl JS -->
+<script src="{% static 'assets/plugins/owlcarousel/owl.carousel.min.js' %}"></script>
+{% endif %}
+
+<!-- Bootstrap Tagsinput JS -->
+<script src="{% static 'assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js' %}"></script>
+
+{% if request.path == '/index' or request.path == '/teacher-dashboard' %}
+<!-- Counter JS -->
+<script src="{% static 'assets/plugins/countup/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/plugins/countup/jquery.waypoints.min.js' %}">	</script>
+{% endif %}
+
+<!-- Internal Ratings JS --><!-- Rater JS -->
+{% if request.path == '/ui-rating' %}
+<script src="{% static 'assets/js/ratings.js' %}"></script>
+<script src="{% static 'assets/plugins/rater-js/index.js' %}"></script>
+{% endif %}
+
+<!-- Custom JS -->
+{% comment %} {% if "layout-rtl" not in request.path and "layout-default" not in request.path and "layout-mini" not in request.path and "layout-box" not in request.path and "layout-dark" not in request.path and "/" not in request.path and "login-2" not in request.path and "login-3" not in request.path and "coming-soon" not in request.path and "forgot-password" not in request.path and "forgot-password-2" not in request.path and "forgot-password-3" not in request.path and "email-verification" not in request.path  and "email-verification-2" not in request.path and "email-verification-3" not in request.path and "reset-password" not in request.path and "reset-password-2" not in request.path and "reset-password-3" not in request.path and "two-step-verification" not in request.path and "two-step-verification-2" not in request.path and "two-step-verification-3" not in request.path and "lock-screen" not in request.path and "blank-page" not in request.path and "reset-password-success" not in request.path and "reset-password-success-2" not in request.path and "reset-password-success-3" not in request.path and "under-maintenance" not in request.path and "register" not in request.path and "register-2" not in request.path and "register-3" not in request.path %}
+<script src="{% static 'assets/js/theme-script.js' %}"></script>
+{% endif %} {% endcomment %}
+
+<!-- Custom JS -->
+<script src="{% static 'assets/js/script.js' %}"></script>

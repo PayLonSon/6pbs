@@ -1,0 +1,653 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    <div class="content">
+      <!-- Page Header -->
+      <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+        {% block title %}
+          {% include 'partials/title.html' with title='Comments' text='Dashboard' textone='Pages' texttwo='Comments' %}
+        {% endblock %}
+        <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+          <div class="pe-1 mb-2">
+            <a href="#" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Refresh" data-bs-original-title="Refresh"><i class="ti ti-refresh"></i></a>
+          </div>
+          <div class="pe-1 mb-2">
+            <button type="button" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Print" data-bs-original-title="Print"><i class="ti ti-printer"></i></button>
+          </div>
+          <div class="dropdown me-2 mb-2">
+            <a href="javascript:void(0);" class="dropdown-toggle btn btn-light fw-medium d-inline-flex align-items-center" data-bs-toggle="dropdown"><i class="ti ti-file-export me-2"></i>Export</a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel</a>
+              </li>
+            </ul>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#add_blog"><i class="ti ti-square-rounded-plus me-2"></i>Add Blog</a>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Header -->
+
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+          <h4 class="mb-3">Comments List</h4>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="input-icon-start mb-3 me-2 position-relative">
+              <span class="icon-addon"><i class="ti ti-calendar"></i></span>
+              <input type="text" class="form-control date-range bookingrange" placeholder="Select" value="Academic Year : 2024 / 2025" />
+            </div>
+            <div class="dropdown mb-3 me-2">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ti ti-filter me-2"></i>Filter</a>
+              <div class="dropdown-menu drop-width">
+                <form action="{% url 'blog_comments' %}">
+                  <div class="d-flex align-items-center border-bottom p-3">
+                    <h4>Filter</h4>
+                  </div>
+                  <div class="p-3 border-bottom">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mb-0">
+                          <label class="form-label">Date</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>25 May 2024</option>
+                            <option>15 May 2024</option>
+                            <option>27 Apr 2024</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-3 d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light me-3">Reset</a>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="dropdown mb-3">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown"><i class="ti ti-sort-ascending-2 me-2"></i>Sort by A-Z</a>
+              <ul class="dropdown-menu p-3">
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1 active">Ascending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Descending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Viewed</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body p-0 py-3">
+          <!-- /Comments List -->
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th class="no-sort">
+                    <div class="form-check form-check-md">
+                      <input class="form-check-input" type="checkbox" id="select-all" />
+                    </div>
+                  </th>
+                  <th>Comment</th>
+                  <th>Date</th>
+                  <th>Review</th>
+                  <th>Blog</th>
+                  <th>By</th>
+                  <th>Action</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">I absolutely loved this article!... The insights</td>
+                  <td class="text-gray-9">25 May 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">5 Effective Strategies to Boost Your Productivity</td>
+                  <td>Rubiaana</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Self-improvement is a continuous journey</td>
+                  <td class="text-gray-9">15 May 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Personal development and self-improvement</td>
+                  <td>Jordan</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Prioritizing tasks makes a huge difference.</td>
+                  <td class="text-gray-9">12 May 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Prioritize Your Tasks</td>
+                  <td>Daniel</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Turning off notifications helped me focus</td>
+                  <td class="text-gray-9">27 Apr 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">How to eliminate Eliminate Distractions</td>
+                  <td>Letitia</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Regular breaks improve my retention.</td>
+                  <td class="text-gray-9">16 Apr 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Steps to Take Regular Breaks before learning</td>
+                  <td>Henrita</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Using a planner keeps me on track</td>
+                  <td class="text-gray-9">10 Apr 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Using Time Management Techniques</td>
+                  <td>Ziatan</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Great strategies for schools!</td>
+                  <td class="text-gray-9">24 Mar 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Effective Strategies for School Administration</td>
+                  <td>Jason</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Excited to learn about tech in schools!</td>
+                  <td class="text-gray-9">18 Mar 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Implementing Technology in School Management</td>
+                  <td>Gloria</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Communication is key in any organization</td>
+                  <td class="text-gray-9">11 Mar 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Building Strong Communication Channels in Schools</td>
+                  <td>Elizabeth</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Improving staff training sounds promising!</td>
+                  <td class="text-gray-9">20 Feb 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Effective Staff Training and Development in Schools</td>
+                  <td>Michael</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkboxs">
+                      <input type="checkbox" />
+                      <span class="checkmarks"></span>
+                    </label>
+                  </td>
+                  <td class="text-content">Safety is paramount in schools</td>
+                  <td class="text-gray-9">19 Feb 2024</td>
+                  <td>
+                    <div class="rating">
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <i class="ti ti-star-filled filled"></i>
+                      <span class="rating-rate">5.0</span>
+                    </div>
+                  </td>
+                  <td class="text-gray-9 text-content">Ensuring Safety and Security Measures in Schools</td>
+                  <td>Richard</td>
+                  <td>
+                    <select class="select">
+                      <option>Unpublish</option>
+                      <option>Publish</option>
+                    </select>
+                  </td>
+                  <td>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#delete-modal" class="delete-icon"><i class="ti ti-trash-x"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /Comments List -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Wrapper -->
+
+  <!-- Add Blog -->
+  <div class="modal fade" id="add_blog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">New Blogs</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="blog.html">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Blog Title</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <label class="form-label">Featured Image</label>
+                <div class="d-flex align-items-center upload-pic flex-wrap row-gap-3 mb-3">
+                  <div class="d-flex align-items-center justify-content-center avatar avatar-xxl border border-dashed me-2 flex-shrink-0 text-dark frames">
+                    <i class="ti ti-photo-plus fs-16"></i>
+                  </div>
+                  <div class="profile-upload">
+                    <div class="profile-uploader d-flex align-items-center">
+                      <div class="drag-upload-btn mb-3">
+                        Upload<input type="file" class="form-control image-sign" multiple="" />
+                      </div>
+                      <a href="javascript:void(0);" class="btn btn-primary mb-3">Remove</a>
+                    </div>
+                    <p>Upload image size 4MB, Format JPG, PNG, SVG</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Category</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option>Education</option>
+                    <option>Advice</option>
+                    <option>Academic</option>
+                    <option>Clear Goals</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Tags</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option>Guide</option>
+                    <option>Development</option>
+                    <option>Education</option>
+                    <option>Sports</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Status</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-0">
+                  <label class="form-label">Description</label>
+                  <div class="summernote"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Blog</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Add Blog -->
+
+  <!-- Edit Blog -->
+  <div class="modal fade" id="edit_blog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Blogs</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="blog.html">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Blog Title</label>
+                  <input type="text" class="form-control" placeholder="Enter Title" value="Personal development and self-improvement" />
+                </div>
+                <label class="form-label">Featured Image</label>
+                <div class="d-flex align-items-center upload-pic flex-wrap row-gap-3 mb-3">
+                  <div class="d-flex align-items-center justify-content-center avatar avatar-xxl border border-dashed me-2 flex-shrink-0 text-dark frames">
+                    <i class="ti ti-photo-plus fs-16"></i>
+                  </div>
+                  <div class="profile-upload">
+                    <div class="profile-uploader d-flex align-items-center">
+                      <div class="drag-upload-btn mb-3">
+                        Upload<input type="file" class="form-control image-sign" multiple="" />
+                      </div>
+                      <a href="javascript:void(0);" class="btn btn-primary mb-3">Remove</a>
+                    </div>
+                    <p>Upload image size 4MB, Format JPG, PNG, SVG</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Category</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option>Education</option>
+                    <option selected>Advice</option>
+                    <option>Academic</option>
+                    <option>Clear Goals</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Tags</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option>Guide</option>
+                    <option selected>Development</option>
+                    <option>Education</option>
+                    <option>Sports</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Status</label>
+                  <select class="select">
+                    <option>Selct</option>
+                    <option selected>Active</option>
+                    <option>Inactive</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-0">
+                  <label class="form-label">Description</label>
+                  <div class="summernote">Introduction: Are you struggling to stay focused and get things done? Do you find yourself procrastinating or feeling overwhelmed by your workload? You're not alone. In today's fast-paced world, maintaining productivity can be a challenge. But fear not! In this article, we'll share five proven strategies to help you boost your productivity and reclaim control of your time. 1. Set Clear Goals: One of the most effective ways to increase productivity is to set clear, achievable goals. Start by defining what you want to accomplish, and break down your goals into smaller, manageable tasks. This will help you stay focused and motivated as you work towards achieving your objectives. 2. Prioritize Your Tasks: Not all tasks are created equal. To maximize your productivity, it's essential to prioritize your tasks based on their importance and urgency. Identify the most critical tasks that align with your goals and focus your time and energy on completing them first. This will prevent you from getting bogged down by less important tasks and ensure that you're making progress towards your objectives. 3. Eliminate Distractions: Distractions can derail your productivity and prevent you from staying focused on your work. Identify common distractions in your environment, such as social media, email notifications, or noisy surroundings, and take steps to minimize or eliminate them. This could involve turning off notifications, setting designated work hours, or creating a distraction-free workspace where you can concentrate without interruption. 4. Use Time Management Techniques: Effective time management is key to enhancing productivity. Experiment with different time management techniques, such as the Pomodoro Technique, time blocking, or the Eisenhower Matrix, to find a system that works best for you. By allocating your time wisely and staying organized, you can maximize your efficiency and accomplish more in less time. 5. Take Regular Breaks: Contrary to popular belief, taking regular breaks can actually improve productivity. Research has shown that short breaks can help refresh your mind, prevent burnout, and enhance focus and concentration. Incorporate short breaks into your workday, and use them to rest, recharge, and rejuvenate. Whether it's going for a walk, practicing mindfulness, or simply taking a few deep breaths, find activities that help you relax and unwind before diving back into your work. Conclusion: Boosting productivity is not an overnight process, but with dedication and consistent effort, you can develop habits and strategies that will help you work smarter, not harder. By setting clear goals, prioritizing tasks, eliminating distractions, managing your time effectively, and taking regular breaks, you can unlock your full potential and achieve greater success in both your personal and professional life.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Edit Blog -->
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="delete-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="{% url 'blog_comments' %}">
+          <div class="modal-body text-center">
+            <span class="delete-icon"><i class="ti ti-trash-x"></i></span>
+            <h4>Confirm Deletion</h4>
+            <p>You want to delete all the marked items, this cant be undone once you delete.</p>
+            <div class="d-flex justify-content-center">
+              <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Delete Modal -->
+{% endblock %}

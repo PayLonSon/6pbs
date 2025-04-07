@@ -1,0 +1,6 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'payment_gateways' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'payment_gateways' %}active{% endif %}">Payment Gateway</a>
+    <a href="{% url 'tax_rates' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'tax_rates' %}active{% endif %}">Tax Rates</a>
+  </div>
+</div>

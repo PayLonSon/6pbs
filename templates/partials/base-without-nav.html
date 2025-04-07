@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block head %}
+      {% include "partials/head.html" %}
+  {% endblock head %}
+
+
+  <body class="{% if request.path == '/coming-soon' %} bg-light-200 {% elif request.path == '/under-maintenance' %} error-page {% else %} account-page {% endif %}">
+    <div class="main-wrapper">
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+    {% block javascript %} 
+        {% include "partials/script.html" %} 
+    {% endblock javascript %}
+  </body>
+</html>

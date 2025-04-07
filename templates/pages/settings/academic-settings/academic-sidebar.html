@@ -1,0 +1,6 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'school_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'school_settings' %}active{% endif %}">School Settings</a>
+    <a href="{% url 'religion' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'religion' %}active{% endif %}">Religion</a>
+  </div>
+</div>

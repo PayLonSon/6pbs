@@ -1,0 +1,22 @@
+<div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+    <div class="my-auto mb-2">
+        <h3 class="page-title mb-1">{{title}}</h3>
+        <nav>
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">{{pagetitle}}</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+        <div class="mb-2">
+            <a href="add-student" class="btn btn-primary d-flex align-items-center me-3"><i
+                    class="ti ti-square-rounded-plus me-2"></i>Add New Student</a>
+        </div>
+        <div class="mb-2">
+            <a href="collect-fees" class="btn btn-light d-flex align-items-center">Fees Details</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,329 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    <div class="content">
+      <!-- Page Header -->
+      <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+        {% block title %}
+          {% include 'partials/title.html' with title='Hostel Rooms' text='Dashboard' textone='Management' texttwo='Hostel Rooms' %}
+        {% endblock %}
+        <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+          <div class="pe-1 mb-2">
+            <a href="#" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Refresh" data-bs-original-title="Refresh"><i class="ti ti-refresh"></i></a>
+          </div>
+          <div class="pe-1 mb-2">
+            <button type="button" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Print" data-bs-original-title="Print"><i class="ti ti-printer"></i></button>
+          </div>
+          <div class="dropdown me-2 mb-2">
+            <a href="javascript:void(0);" class="dropdown-toggle btn btn-light fw-medium d-inline-flex align-items-center" data-bs-toggle="dropdown"><i class="ti ti-file-export me-2"></i>Export</a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel</a>
+              </li>
+            </ul>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#add_hostel_rooms"><i class="ti ti-square-rounded-plus me-2"></i>Add Hostel Room</a>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Header -->
+
+      <!-- Students List -->
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+          <h4 class="mb-3">Hostel Rooms</h4>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="input-icon-start mb-3 me-2 position-relative">
+              <span class="icon-addon"><i class="ti ti-calendar"></i></span>
+              <input type="text" class="form-control date-range bookingrange" placeholder="Select" value="Academic Year : 2024 / 2025" />
+            </div>
+            <div class="dropdown mb-3 me-2">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ti ti-filter me-2"></i>Filter</a>
+              <div class="dropdown-menu drop-width">
+                <form action="{% url 'hostel_rooms' %}">
+                  <div class="d-flex align-items-center border-bottom p-3">
+                    <h4>Filter</h4>
+                  </div>
+                  <div class="p-3 border-bottom">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Room No</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>A1</option>
+                            <option>A2</option>
+                            <option>A3</option>
+                            <option>A4</option>
+                            <option>B1</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Name</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>Phoenix Residence</option>
+                            <option>Tranquil Haven</option>
+                            <option>Radiant Towers</option>
+                            <option>Nova Nest</option>
+                            <option>Vista Villa</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-0">
+                          <label class="form-label">Type</label>
+                          <select class="select">
+                            <option>One Bed</option>
+                            <option>One Bed AC</option>
+                            <option>Two Bed</option>
+                            <option>Two Bed AC</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-0">
+                          <label class="form-label">More Filter</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>Filters</option>
+                            <option>Room No</option>
+                            <option>Hostel Name</option>
+                            <option>Room Type</option>
+                            <option>No of Bed</option>
+                            <option>Cost per Bed</option>
+                            <option>Action</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-3 d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light me-3">Reset</a>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="dropdown mb-3">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown"><i class="ti ti-sort-ascending-2 me-2"></i>Sort by A-Z</a>
+              <ul class="dropdown-menu p-3">
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1 active">Ascending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Descending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Viewed</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-0 py-3">
+          <!-- Student List -->
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th class="no-sort">
+                    <div class="form-check form-check-md">
+                      <input class="form-check-input" type="checkbox" id="select-all" />
+                    </div>
+                  </th>
+                  <th>ID</th>
+                  <th>Room No</th>
+                  <th>Hostel Name</th>
+                  <th>Room Type</th>
+                  <th>No of Bed</th>
+                  <th>Cost per Bed</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for record in hostel_rooms %}
+                  <tr>
+                    <td>
+                      <div class="form-check form-check-md">
+                        <input class="form-check-input" type="checkbox" />
+                      </div>
+                    </td>
+                    <td>
+                      <a href="#" class="link-primary">{{ record.ID }}</a>
+                    </td>
+                    <td>{{ record.RoomNo }}</td>
+                    <td>{{ record.HostelName }}</td>
+                    <td>{{ record.RoomType }}</td>
+                    <td>{{ record.NoofBed }}</td>
+                    <td>{{ record.CostperBed }}</td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                          <a href="#" class="btn btn-white btn-icon btn-sm d-flex align-items-center justify-content-center rounded-circle p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-dots-vertical fs-14"></i></a>
+                          <ul class="dropdown-menu dropdown-menu-right p-3">
+                            <li>
+                              <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#edit_hostel_rooms"><i class="ti ti-edit-circle me-2"></i>Edit</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="ti ti-trash-x me-2"></i>Delete</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /Student List -->
+        </div>
+      </div>
+      <!-- /Students List -->
+    </div>
+  </div>
+  <!-- /Page Wrapper -->
+
+  <!-- Add Hostel Rooms -->
+  <div class="modal fade" id="add_hostel_rooms">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Hostel Room</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="{% url 'hostel_rooms' %}">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Room No</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Hostel Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Room Type</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option>One Bed</option>
+                    <option>One Bed AC</option>
+                    <option>Two Bed</option>
+                    <option>Two Bed AC</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">No of Bed</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option>1</option>
+                    <option>2</option>
+                  </select>
+                </div>
+                <div class="mb-0">
+                  <label class="form-label">Cost per Bed</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Hostel Room</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Add Hostel Rooms -->
+
+  <!-- Edit Hostel Room -->
+  <div class="modal fade" id="edit_hostel_rooms">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Hostel Room</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="{% url 'hostel_rooms' %}">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Room No</label>
+                  <input type="text" class="form-control" placeholder="Enter Room No" value="A1" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Hostel Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Hostel Name" value="Phoenix Residence" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Room Type</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option selected>One Bed</option>
+                    <option>One Bed AC</option>
+                    <option>Two Bed</option>
+                    <option>Two Bed AC</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">No of Bed</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option selected>1</option>
+                    <option>2</option>
+                  </select>
+                </div>
+                <div class="mb-0">
+                  <label class="form-label">Cost per Bed</label>
+                  <input type="text" class="form-control" placeholder="Enter Cost per Bed" value="$200" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Edit Hostel Room -->
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="delete-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="{% url 'hostel_rooms' %}">
+          <div class="modal-body text-center">
+            <span class="delete-icon"><i class="ti ti-trash-x"></i></span>
+            <h4>Confirm Deletion</h4>
+            <p>You want to delete all the marked items, this cant be undone once you delete.</p>
+            <div class="d-flex justify-content-center">
+              <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Delete Modal -->
+{% endblock %}

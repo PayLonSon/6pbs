@@ -1,0 +1,984 @@
+{% load static %} 
+{% block sidebar %}
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+      <ul>
+        <li>
+          <a
+            href="javascript:void(0);"
+            class="d-flex align-items-center border bg-white rounded p-2 mb-4"
+          >
+            <img
+              src="{% static 'assets/img/icons/global-img.svg' %}"
+              class="avatar avatar-md img-fluid rounded"
+              alt="Profile"
+            />
+            <span class="text-dark ms-2 fw-normal">Global International</span>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <h6 class="submenu-hdr"><span>Main</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);" class="{% if request.path == '/index' or request.path == '/teacher-dashboard' or request.path == '/student-dashboard' or request.path == '/parent-dashboard' %}subdrop active{% endif %}"
+                ><i class="ti ti-layout-dashboard"></i><span>Dashboard</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li>
+                  <a
+                    href="{% url 'index' %}"
+                    class="{% if request.path == '/index' %}active{% endif %}"
+                    >Admin Dashboard</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'teacher_dashboard' %}"
+                    class="{% if request.path == '/teacher-dashboard' %}active{% endif %}"
+                    >Teacher Dashboard</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'student_dashboard' %}"
+                    class="{% if request.path == '/student-dashboard' %}active{% endif %}"
+                    >Student Dashboard</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{% url 'parent_dashboard' %}"
+                    class="{% if request.path == '/parent-dashboard' %}active{% endif %}"
+                    >Parent Dashboard</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/chat' or request.path == '/call' or request.path == '/calendar' or request.path == '/email' or request.path == '/todo' or request.path == '/notes' or request.path == '/file_manager' %}subdrop active{% endif %}"
+                ><i class="ti ti-layout-list"></i><span>Application</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'chat' %}" class="{% if request.path == '/chat' %}active{% endif %}">Chat</a></li>
+                <li><a href="{% url 'call' %}" class="{% if request.path == '/call' %}active{% endif %}">Call</a></li>
+                <li><a href="{% url 'calendar' %}" class="{% if request.path == '/calendar' %}active{% endif %}">Calendar</a></li>
+                <li><a href="{% url 'email' %}" class="{% if request.path == '/email' %}active{% endif %}">Email</a></li>
+                <li><a href="{% url 'todo' %}" class="{% if request.path == '/todo' %}active{% endif %}">To Do</a></li>
+                <li><a href="{% url 'notes' %}" class="{% if request.path == '/notes' %}active{% endif %}">Notes</a></li>
+                <li><a href="{% url 'file_manager' %}" class="{% if request.path == '/file_manager' %}active{% endif %}">File Manager</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Layout</span></h6>
+          <ul>
+            <li class="{% if request.path == '/layout-default' %}active{% endif %}">
+              <a href="{% url 'layout_default' %}"
+                ><i class="ti ti-layout-sidebar"></i><span>Default </span></a
+              >
+            </li>
+            <li class="{% if request.path == '/layout-mini' %}active{% endif %}">
+              <a href="{% url 'layout_mini' %}"
+                ><i class="ti ti-layout-align-left"></i><span>Mini</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/layout-rtl' %}active{% endif %}">
+              <a href="{% url 'layout_rtl' %}"
+                ><i class="ti ti-text-direction-rtl"></i><span>RTL</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/layout-box' %}active{% endif %}">
+              <a href="{% url 'layout_box' %}"
+                ><i class="ti ti-layout-distribute-vertical"></i
+                ><span>Box</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/layout-dark' %}active{% endif %}">
+              <a href="{% url 'layout_dark' %}"
+                ><i class="ti ti-moon"></i><span>Dark</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Peoples</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/student-grid' or request.path == '/add-student' or request.path == '/edit-student' or request.path == '/student-list' or request.path == '/student-details' or request.path == '/student-promotion' %} subdrop active{% endif %}"
+                ><i class="ti ti-school"></i><span>Students</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'student_grid' %}" class="{% if request.path == '/student-grid' or request.path == '/add-student' or request.path == '/edit-student' %}active{% endif %}">All Students</a></li>
+                <li><a href="{% url 'student_list' %}"class="{% if request.path == '/student-list' %}active{% endif %}" >Student List</a></li>
+                <li><a href="{% url 'student_details' %}" class="{% if request.path == '/student-details' %}active{% endif %}">Student Details</a></li>
+                <li><a href="{% url 'student_promotion' %}" class="{% if request.path == '/student-promotion' %}active{% endif %}">Student Promotion</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/parent-grid' or request.path == '/parent-list' %} subdrop active{% endif %}"
+                ><i class="ti ti-user-bolt"></i><span>Parents</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'parent_grid' %}" class="{% if request.path == '/parent-grid' %}active{% endif %}">All Parents</a></li>
+                <li><a href="{% url 'parent_list' %}" class="{% if request.path == '/parent-list' %}active{% endif %}">Parent List</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/guardian-grid' or request.path == '/guardian-list' %}subdrop active{% endif %}"
+                ><i class="ti ti-user-shield"></i><span>Guardians</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'guardian_grid' %}" class="{% if request.path == '/guardian-grid' %}active{% endif %}">All Guardians</a></li>
+                <li><a href="{% url 'guardian_list' %}" class="{% if request.path == '/guardian-list' %}active{% endif %}">Guardian List</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/teacher-grid' or request.path == '/add-teacher' or request.path == '/teacher-list' or request.path == '/teacher-details' or request.path == '/routine-teachers' %}subdrop active{% endif %}"
+                ><i class="ti ti-users"></i><span>Teachers</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'teacher_grid' %}" class="{% if request.path == '/teacher-grid' or request.path == '/add-teacher' %}active{% endif %}">All Teachers</a></li>
+                <li><a href="{% url 'teacher_list' %}" class="{% if request.path == '/teacher-list' %}active{% endif %}">Teacher List</a></li>
+                <li><a href="{% url 'teacher_details' %}" class="{% if request.path == '/teacher-details' %}active{% endif %}">Teacher Details</a></li>
+                <li><a href="{% url 'routine_teachers' %}" class="{% if request.path == '/routine-teachers' %}active{% endif %}">Routine</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Academic</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/classes-list' or request.path == '/schedule-classes' %}subdrop active{% endif %}"
+                ><i class="ti ti-school-bell"></i><span>Classes</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'classes_list' %}" class="{% if request.path == '/classes-list' %}active{% endif %}">All Classes</a></li>
+                <li><a href="{% url 'schedule_classes' %}" class="{% if request.path == '/schedule-classes' %}active{% endif %}">Schedule</a></li>
+              </ul>
+            </li>
+            <li class="{% if request.path == '/class-room' %}active{% endif %}">
+              <a href="{% url 'class_room' %}"
+                ><i class="ti ti-building"></i><span>Class Room</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-routine' %}active{% endif %}">
+              <a href="{% url 'class_routine' %}"
+                ><i class="ti ti-bell-school"></i><span>Class Routine</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-section' %}active{% endif %}">
+              <a href="{% url 'class_section' %}"
+                ><i class="ti ti-square-rotated-forbid-2"></i
+                ><span>Section</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-subject' %}active{% endif %}">
+              <a href="{% url 'class_subject' %}"
+                ><i class="ti ti-book"></i><span>Subject</span></a                                                                                                                                                                                                                                                              
+              >
+            </li>
+            <li class="{% if request.path == '/class-syllabus' %}active{% endif %}">
+              <a href="{% url 'class_syllabus' %}"
+                ><i class="ti ti-book-upload"></i><span>Syllabus</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-time-table' %}active{% endif %}">
+              <a href="{% url 'class_time_table' %}"
+                ><i class="ti ti-table"></i><span>Time Table</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-home-work' %}active{% endif %}">
+              <a href="{% url 'class_home_work' %}"
+                ><i class="ti ti-license"></i><span>Home Work</span></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/exam-list' or request.path == '/exam-schedule' or request.path == '/grade' or request.path == '/exam-attendance' or request.path == '/exam-results' %}subdrop active{% endif %}"
+                ><i class="ti ti-hexagonal-prism-plus"></i
+                ><span>Examinations</span><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'exam_list' %}" class="{% if request.path == '/exam-list' %}active{% endif %}">Exam</a></li>
+                <li><a href="{% url 'exam_schedule' %}" class="{% if request.path == '/exam-schedule' %}active{% endif %}">Exam Schedule</a></li>
+                <li><a href="{% url 'grade' %}" class="{% if request.path == '/grade' %}active{% endif %}">Grade</a></li>
+                <li><a href="{% url 'exam_attendance' %}" class="{% if request.path == '/exam-attendance' %}active{% endif %}">Exam Attendance</a></li>
+                <li><a href="{% url 'exam_results' %}" class="{% if request.path == '/exam-results' %}active{% endif %}">Exam Results</a></li>
+              </ul>
+            </li>
+            <li class="{% if request.path == '/academic-reasons' %}active{% endif %}">
+              <a href="{% url 'academic_reasons' %}"
+                ><i class="ti ti-lifebuoy"></i><span>Reasons</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Management</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/fees-group' or request.path == '/fees-type' or request.path == '/fees-master' or request.path == '/fees-assign' or request.path == '/collect-fees' %}subdrop active{% endif %}"
+                ><i class="ti ti-report-money"></i><span>Fees Collection</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'fees_group' %}" class="{% if request.path == '/fees-group' %}active{% endif %}">Fees Group</a></li>
+                <li><a href="{% url 'fees_type' %}" class="{% if request.path == '/fees-type' %}active{% endif %}">Fees Type</a></li>
+                <li><a href="{% url 'fees_master' %}" class="{% if request.path == '/fees-master' %}active{% endif %}">Fees Master</a></li>
+                <li><a href="{% url 'fees_assign' %}" class="{% if request.path == '/fees-assign' %}active{% endif %}">Fees Assign</a></li>
+                <li><a href="{% url 'collect_fees' %}" class="{% if request.path == '/collect-fees' %}active{% endif %}">Collect Fees</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/library-members' or request.path == '/library-books' or request.path == '/library-issue-book' or request.path == '/library-return' %}subdrop active{% endif %}"
+                ><i class="ti ti-notebook"></i><span>Library</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'library_members' %}" class="{% if request.path == '/library-members' %}active{% endif %}">Library Members</a></li>
+                <li><a href="{% url 'library_books' %}" class="{% if request.path == '/library-books' %}active{% endif %}">Books</a></li>
+                <li><a href="{% url 'library_issue_book' %}" class="{% if request.path == '/library-issue-book' %}active{% endif %}">Issue Book</a></li>
+                <li><a href="{% url 'library_return' %}" class="{% if request.path == '/library-return' %}active{% endif %}">Return</a></li>
+              </ul>
+            </li>
+            <li class="{% if request.path == '/sports' %}active{% endif %}">
+              <a href="{% url 'sports' %}"
+                ><i class="ti ti-run"></i><span>Sports</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/players' %}active{% endif %}">
+              <a href="{% url 'players' %}"
+                ><i class="ti ti-play-football"></i><span>Players</span></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/hostel-list' or request.path == '/hostel-rooms' or request.path == '/hostel-room-type' %}subdrop active{% endif %}"
+                ><i class="ti ti-building-fortress"></i><span>Hostel</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'hostel_list' %}" class="{% if request.path == '/hostel-list' %}active{% endif %}">Hostel List</a></li>
+                <li><a href="{% url 'hostel_rooms' %}" class="{% if request.path == '/hostel-rooms' %}active{% endif %}">Hostel Rooms</a></li>
+                <li><a href="{% url 'hostel_room_type' %}" class="{% if request.path == '/hostel-room-type' %}active{% endif %}">Room Type</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/transport-routes' or request.path == '/transport-pickup-points' or request.path == '/transport-vehicle-drivers' or request.path == '/transport-vehicle' or request.path == '/transport-assign-vehicle' %}subdrop active{% endif %}"
+                ><i class="ti ti-bus"></i><span>Transport</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'transport_routes' %}" class="{% if request.path == '/transport-routes' %}active{% endif %}">Routes</a></li>
+                <li>
+                  <a href="{% url 'transport_pickup_points' %}" class="{% if request.path == '/transport-pickup-points' %}active{% endif %}">Pickup Points</a>
+                </li>
+                <li>
+                  <a href="{% url 'transport_vehicle_drivers' %}" class="{% if request.path == '/transport-vehicle-drivers' %}active{% endif %}">Vehicle Drivers</a>
+                </li>
+                <li><a href="{% url 'transport_vehicle' %}" class="{% if request.path == '/transport-vehicle' %}active{% endif %}">Vehicle</a></li>
+                <li>
+                  <a href="{% url 'transport_assign_vehicle' %}" class="{% if request.path == '/transport-assign-vehicle' %}active{% endif %}">Assign Vehicle</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>HRM</span></h6>
+          <ul>
+            <li class="{% if request.path == '/staffs-list' or request.path == '/add-staff' or request.path == '/edit-staff' or request.path == '/staff-details' %}active{% endif %}">
+              <a href="{% url 'staffs_list' %}"
+                ><i class="ti ti-users-group"></i><span>Staffs</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/departments' %}active{% endif %}">
+              <a href="{% url 'departments' %}"
+                ><i class="ti ti-layout-distribute-horizontal"></i
+                ><span>Departments</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/designation' %}active{% endif %}">
+              <a href="{% url 'designation' %}"
+                ><i class="ti ti-user-exclamation"></i
+                ><span>Designation</span></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/student-attendance' or request.path == '/teacher-attendance' or request.path == '/staff-attendance' %}subdrop active{% endif %}"
+                ><i class="ti ti-calendar-share"></i><span>Attendance</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li>
+                  <a href="{% url 'student_attendance' %}" class="{% if request.path == '/student-attendance' %}active{% endif %}">Student Attendance</a>
+                </li>
+                <li>
+                  <a href="{% url 'teacher_attendance' %}" class="{% if request.path == '/teacher-attendance' %}active{% endif %}">Teacher Attendance</a>
+                </li>
+                <li>
+                  <a href="{% url 'staff_attendance' %}" class="{% if request.path == '/staff-attendance' %}active{% endif %}">Staff Attendance</a>
+                </li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+               class="{% if request.path == '/list-leaves' or request.path == '/approve-request' %}subdrop active{% endif %}"
+                ><i class="ti ti-calendar-stats"></i><span>Leaves</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'list_leaves' %}" class="{% if request.path == '/list-leaves' %}active{% endif %}">List of leaves</a></li>
+                <li><a href="{% url 'approve_request' %}" class="{% if request.path == '/approve-request' %}active{% endif %}">Approve Request</a></li>
+              </ul>
+            </li>
+            <li class="{% if request.path == '/holidays' %}active{% endif %}">
+              <a href="{% url 'holidays' %}"
+                ><i class="ti ti-briefcase"></i><span>Holidays</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/payroll' %}active{% endif %}">
+              <a href="{% url 'payroll' %}"
+                ><i class="ti ti-moneybag"></i><span>Payroll</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <h6 class="submenu-hdr"><span>Finance & Accounts</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/expenses' or request.path == '/add-invoice' or request.path == '/edit-invoice' or request.path == '/expenses-category' or request.path == '/accounts-income' or request.path == '/accounts-invoices' or request.path == '/invoice' or request.path == '/accounts-transactions' %}subdrop active{% endif %}">
+                <i class="ti ti-swipe"></i><span>Accounts</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'expenses' %}" class="{% if request.path == '/expenses' %}active{% endif %}">Expenses</a></li>
+                <li><a href="{% url 'expenses_category' %}" class="{% if request.path == '/expenses-category' %}active{% endif %}">Expense Category</a></li>
+                <li><a href="{% url 'accounts_income' %}" class="{% if request.path == '/accounts-income' %}active{% endif %}">Income</a></li>
+                <li><a href="{% url 'accounts_invoices' %}" class="{% if request.path == '/accounts-invoices' or request.path == '/add-invoice' or request.path == '/edit-invoice' %}active{% endif %}">Invoices</a></li>
+                <li><a href="{% url 'invoice' %}" class="{% if request.path == '/invoice' %}active{% endif %}">Invoice View</a></li>
+                <li><a href="{% url 'accounts_transactions' %}" class="{% if request.path == '/accounts-transactions' %}active{% endif %}">Transactions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h6 class="submenu-hdr"><span>Announcements</span></h6>
+          <ul>
+            <li class="{% if request.path == '/notice-board' %}active{% endif %}">
+              <a href="{% url 'notice_board' %}"
+                ><i class="ti ti-clipboard-data"></i
+                ><span>Notice Board</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/events' %}active{% endif %}">
+              <a href="{% url 'events' %}"
+                ><i class="ti ti-calendar-question"></i><span>Events</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Reports</span></h6>
+          <ul>
+            <li class="{% if request.path == '/attendance-report' or request.path == '/student-attendance-type' or request.path == '/daily-attendance' or request.path == '/student-day-wise' or request.path == '/teacher-day-wise' or request.path == '/teacher-report' or request.path == '/staff-day-wise' or request.path == '/staff-report' %}active{% endif %}">
+              <a href="{% url 'attendance_report' %}"
+                ><i class="ti ti-calendar-due"></i
+                ><span>Attendance Report</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/class-report' %}active{% endif %}">
+              <a href="{% url 'class_report' %}"
+                ><i class="ti ti-graph"></i><span>Class Report</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/student-report' %}active{% endif %}">
+              <a href="{% url 'student_report' %}"
+                ><i class="ti ti-chart-infographic"></i
+                ><span>Student Report</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/grade-report' %}active{% endif %}">
+              <a href="{% url 'grade_report' %}"
+                ><i class="ti ti-calendar-x"></i><span>Grade Report</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/leave-report' %}active{% endif %}">
+              <a href="{% url 'leave_report' %}"
+                ><i class="ti ti-line"></i><span>Leave Report</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/fees-report' %}active{% endif %}">
+              <a href="{% url 'fees_report' %}"
+                ><i class="ti ti-mask"></i><span>Fees Report</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>User Management</span></h6>
+          <ul>
+            <li class="{% if request.path == '/users' %}active{% endif %}">
+              <a href="{% url 'users' %}"
+                ><i class="ti ti-users-minus"></i><span>Users</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/roles-permission' or request.path == '/permission' %}active{% endif %}">
+              <a href="{% url 'roles_permission' %}"
+                ><i class="ti ti-shield-plus"></i
+                ><span>Roles & Permissions</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/delete-account' %}active{% endif %}">
+              <a href="{% url 'delete_account' %}"
+                ><i class="ti ti-user-question"></i
+                ><span>Delete Account Request</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Membership</span></h6>
+          <ul>
+            <li class="{% if request.path == '/membership-plans' %}active{% endif %}">
+              <a href="{% url 'membership_plans' %}"
+                ><i class="ti ti-user-plus"></i><span>Membership Plans</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/membership-addons' %}active{% endif %}">
+              <a href="{% url 'membership_addons' %}"
+                ><i class="ti ti-cone-plus"></i
+                ><span>Membership Addons</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/membership-transactions' %}active{% endif %}">
+              <a href="{% url 'membership_transactions' %}"
+                ><i class="ti ti-file-power"></i><span>Transactions</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Content</span></h6>
+          <ul>
+            <li class="{% if request.path == '/pages' %}active{% endif %}">
+              <a href="{% url 'pages' %}"
+                ><i class="ti ti-page-break"></i><span>Pages</span></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/blog' or request.path == '/blog-categories' or request.path == '/blog-comments' or request.path == '/blog-tags' %} subdrop active{% endif %}"
+              >
+                <i class="ti ti-brand-blogger"></i><span>Blog</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog' %}active{% endif %}">All Blogs</a></li>
+                <li><a href="{% url 'blog_categories' %}" class="{% if request.path == '/blog-categories' %}active{% endif %}">Categories</a></li>
+                <li><a href="{% url 'blog_comments' %}" class="{% if request.path == '/blog-comments' %}active{% endif %}">Comments</a></li>
+                <li><a href="{% url 'blog_tags' %}" class="{% if request.path == '/blog-tags' %}active{% endif %}">Tags</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/countries' or request.path == '/states' or request.path == '/cities' %} subdrop active{% endif %}"
+              >
+                <i class="ti ti-map-pin-search"></i><span>Location</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'countries' %}" class="{% if request.path == '/countries' %}active{% endif %}">Countries</a></li>
+                <li><a href="{% url 'states' %}" class="{% if request.path == '/states' %}active{% endif %}">States</a></li>
+                <li><a href="{% url 'cities' %}" class="{% if request.path == '/cities' %}active{% endif %}">Cities</a></li>
+              </ul>
+            </li>
+            <li class="{% if request.path == '/testimonials' %}active{% endif %}">
+              <a href="testimonials"
+                ><i class="ti ti-quote"></i><span>Testimonials</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/faq' %}active{% endif %}">
+              <a href="faq"
+                ><i class="ti ti-question-mark"></i><span>FAQ</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Support</span></h6>
+          <ul>
+            <li class="{% if request.path == '/contact-messages' %}active{% endif %}">
+              <a href="{% url 'contact_messages' %}"
+                ><i class="ti ti-message"></i><span>Contact Messages</span></a
+              >
+            </li>
+            <li class="{% if request.path == '/tickets' %}active{% endif %}">
+              <a href="{% url 'tickets' %}"
+                ><i class="ti ti-ticket"></i><span>Tickets</span></a
+              >
+            </li>
+          </ul>
+        </li>                                         
+        <li>
+          <h6 class="submenu-hdr"><span>Pages</span></h6>
+          <ul>
+            <li class="{% if request.path == '/profile' %}active{% endif %}">
+              <a href="{% url 'profile' %}"
+                ><i class="ti ti-user"></i><span>Profile</span></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);">
+                <i class="ti ti-lock-open"></i><span>Authentication</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);" class=""
+                    >Login<span class="menu-arrow inside-submenu"></span
+                  ></a>
+                  <ul>
+                    <li><a href="login' %}">Cover</a></li>
+                    <li><a href="login-2' %}">Illustration</a></li>
+                    <li><a href="login-3' %}">Basic</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);" class=""
+                    >Register<span class="menu-arrow inside-submenu"></span
+                  ></a>
+                  <ul>
+                    <li><a href="register">Cover</a></li>
+                    <li><a href="register-2">Illustration</a></li>
+                    <li><a href="register-3">Basic</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                    >Forgot Password<span
+                      class="menu-arrow inside-submenu"
+                    ></span
+                  ></a>
+                  <ul>
+                    <li><a href="forgot_password">Cover</a></li>
+                    <li><a href="forgot-password-2">Illustration</a></li>
+                    <li><a href="forgot-password-3">Basic</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                    >Reset Password<span
+                      class="menu-arrow inside-submenu"
+                    ></span
+                  ></a>
+                  <ul>
+                    <li><a href="reset-password">Cover</a></li>
+                    <li><a href="reset-password-2">Illustration</a></li>
+                    <li><a href="reset-password-3">Basic</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                    >Email Verification<span
+                      class="menu-arrow inside-submenu"
+                    ></span
+                  ></a>
+                  <ul>
+                    <li><a href="email-verification">Cover</a></li>
+                    <li>
+                      <a href="email-verification-2">Illustration</a>
+                    </li>
+                    <li><a href="email-verification-3">Basic</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                    >2 Step Verification<span
+                      class="menu-arrow inside-submenu"
+                    ></span
+                  ></a>
+                  <ul>
+                    <li><a href="two-step-verification">Cover</a></li>
+                    <li>
+                      <a href="two-step-verification-2">Illustration</a>
+                    </li>
+                    <li><a href="two-step-verification-3">Basic</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'lock_screen' %}">Lock Screen</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);">
+                <i class="ti ti-error-404"></i><span>Error Pages</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'error_404' %}">404 Error</a></li>
+                <li><a href="{% url 'error_500' %}">500 Error</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="{% url 'blank_page' %}"
+                ><i class="ti ti-brand-nuxt"></i><span>Blank Page</span></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'coming_soon' %}"
+                ><i class="ti ti-file"></i><span>Coming Soon</span></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'under_maintenance' %}"
+                ><i class="ti ti-moon-2"></i><span>Under Maintenance</span></a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Settings</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);" 
+                class="{% if request.path == '/profile-settings' or request.path == '/security-settings' %} subdrop active{% endif %}"
+              >
+                <i class="ti ti-shield-cog"></i><span>General Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'profile_settings' %}" class="{% if request.path == '/profile-settings' %}active{% endif %}">Profile Settings</a></li>
+                <li><a href="{% url 'security_settings' %}" class="{% if request.path == '/security-settings' %}active{% endif %}">Security Settings</a></li>
+                <li>
+                  <a href="{% url 'notifications_settings' %}" class="{% if request.path == '/notifications-settings' %}active{% endif %}"
+                    >Notifications Settings</a
+                  >
+                </li>
+                <li><a href="{% url 'connected_apps' %}" class="{% if request.path == '/connected-apps' %}active{% endif %}">Connected Apps</a></li>
+              </ul>
+            </li>
+
+            <!-- Till -->
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/company-settings' or request.path == '/localization' or request.path == '/prefixes' or request.path == '/preferences' or request.path == '/social-authentication' or request.path == '/language' %} subdrop active{% endif %}"
+              >
+                <i class="ti ti-device-laptop"></i><span>Website Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'company_settings' %}" class="{% if request.path == '/company-settings' %}active{% endif %}">Company Settings</a></li>
+                <li><a href="{% url 'localization' %}" class="{% if request.path == '/localization' %}active{% endif %}">Localization</a></li>
+                <li><a href="{% url 'prefixes' %}" class="{% if request.path == '/prefixes' %}active{% endif %}">Prefixes</a></li>
+                <li><a href="{% url 'preferences' %}" class="{% if request.path == '/preferences' %}active{% endif %}">Preferences</a></li>
+                <li>
+                  <a href="{% url 'social_authentication' %}" class="{% if request.path == '/social-authentication' %}active{% endif %}">Social Authentication</a>
+                </li>
+                <li><a href="{% url 'language' %}" class="{% if request.path == '/language' %}active{% endif %}">Language</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/invoice-settings' or request.path == '/custom-fields' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-apps"></i><span>App Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'invoice_settings' %}" class="{% if request.path == '/invoice-settings' %}active{% endif %}">Invoice Settings</a></li>
+                <li><a href="{% url 'custom_fields' %}" class="{% if request.path == '/custom-fields' %}active{% endif %}">Custom Fields</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/email-settings' or request.path == '/email-templates' or request.path == '/sms-settings' or request.path == '/otp-settings' or request.path == '/gdpr-cookies' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-file-symlink"></i><span>System Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'email_settings' %}" class="{% if request.path == '/email-settings' %}active{% endif %}">Email Settings</a></li>
+                <li><a href="{% url 'email_templates' %}" class="{% if request.path == '/email-templates' %}active{% endif %}">Email Templates</a></li>
+                <li><a href="{% url 'sms_settings' %}" class="{% if request.path == '/sms-settings' %}active{% endif %}">SMS Settings</a></li>
+                <li><a href="{% url 'otp_settings' %}" class="{% if request.path == '/otp-settings' %}active{% endif %}">OTP</a></li>
+                <li><a href="{% url 'gdpr_cookies' %}" class="{% if request.path == '/gdpr-cookies' %}active{% endif %}">GDPR Cookies</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);" 
+                class="{% if request.path == '/payment-gateways' or request.path == '/tax-rates' %} subdrop active{% endif %}" 
+              >
+                <i class="ti ti-zoom-money"></i><span>Financial Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'payment_gateways' %}" class="{% if request.path == '/payment-gateways' %}active{% endif %}">Payment Gateways </a></li>
+                <li><a href="{% url 'tax_rates' %}" class="{% if request.path == '/tax-rates' %}active{% endif %}">Tax Rates</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/school-settings' or request.path == '/religion' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-calendar-repeat"></i
+                ><span>Academic Settings</span><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'school_settings' %}" class="{% if request.path == '/school-settings' %}active{% endif %}">School Settings </a></li>
+                <li><a href="{% url 'religion' %}" class="{% if request.path == '/religion' %}active{% endif %}">Religion</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/storage' or request.path == '/ban-ip-address' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-flag-cog"></i><span>Other Settings</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'storage' %}" class="{% if request.path == '/storage' %}active{% endif %}">Storage</a></li>
+                <li><a href="{% url 'ban_ip_address' %}" class="{% if request.path == '/ban-ip-address' %}active{% endif %}">Ban IP Address</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h6 class="submenu-hdr"><span>UI Interface</span></h6>
+          <ul>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/ui-alerts' or request.path == '/ui-accordion' or request.path == '/ui-avatar' or request.path == '/ui-badges' or request.path == '/ui-borders' or request.path == '/ui-buttons' or request.path == '/ui-buttons-group' or request.path == '/ui-breadcrumb' or request.path == '/ui-cards' or request.path == '/ui-carousel' or request.path == '/ui-colors' or request.path == '/ui-dropdowns' or request.path == '/ui-grid' or request.path == '/ui-images' or request.path == '/ui-lightbox' or request.path == '/ui-media' or request.path == '/ui-modals' or request.path == '/ui-offcanvas' or request.path == '/ui-pagination' or request.path == '/ui-popovers' or request.path == '/ui-progress' or request.path == '/ui-placeholders' or request.path == '/ui-spinner' or request.path == '/ui-sweetalerts' or request.path == '/ui-nav-tabs' or request.path == '/ui-toasts' or request.path == '/ui-tooltips' or request.path == '/ui-typography' or request.path == '/ui-video' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-hierarchy-2"></i><span>Base UI</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'ui_alerts' %}" class="{% if request.path == '/ui-alerts' %}active{% endif %}">Alerts</a></li>
+                <li><a href="{% url 'ui_accordion' %}" class="{% if request.path == '/ui-accordion' %}active{% endif %}">Accordion</a></li>
+                <li><a href="{% url 'ui_avatar' %}" class="{% if request.path == '/ui-avatar' %}active{% endif %}">Avatar</a></li>
+                <li><a href="{% url 'ui_badges' %}" class="{% if request.path == '/ui-badges' %}active{% endif %}">Badges</a></li>
+                <li><a href="{% url 'ui_borders' %}" class="{% if request.path == '/ui-borders' %}active{% endif %}">Border</a></li>
+                <li><a href="{% url 'ui_buttons' %}" class="{% if request.path == '/ui-buttons' %}active{% endif %}">Buttons</a></li>
+                <li><a href="{% url 'ui_buttons_group' %}" class="{% if request.path == '/ui-buttons-group' %}active{% endif %}">Button Group</a></li>
+                <li><a href="{% url 'ui_breadcrumb' %}" class="{% if request.path == '/ui-breadcrumb' %}active{% endif %}">Breadcrumb</a></li>
+                <li><a href="{% url 'ui_cards' %}" class="{% if request.path == '/ui-cards' %}active{% endif %}">Card</a></li>
+                <li><a href="{% url 'ui_carousel' %}" class="{% if request.path == '/ui-carousel' %}active{% endif %}">Carousel</a></li>
+                <li><a href="{% url 'ui_colors' %}" class="{% if request.path == '/ui-colors' %}active{% endif %}">Colors</a></li>
+                <li><a href="{% url 'ui_dropdowns' %}" class="{% if request.path == '/ui-dropdowns' %}active{% endif %}">Dropdowns</a></li>
+                <li><a href="{% url 'ui_grid' %}" class="{% if request.path == '/ui-grid' %}active{% endif %}">Grid</a></li>
+                <li><a href="{% url 'ui_images' %}" class="{% if request.path == '/ui-images' %}active{% endif %}">Images</a></li>
+                <li><a href="{% url 'ui_lightbox' %}" class="{% if request.path == '/ui-lightbox' %}active{% endif %}">Lightbox</a></li>
+                <li><a href="{% url 'ui_media' %}" class="{% if request.path == '/ui-media' %}active{% endif %}">Media</a></li>
+                <li><a href="{% url 'ui_modals' %}" class="{% if request.path == '/ui-modals' %}active{% endif %}">Modals</a></li>
+                <li><a href="{% url 'ui_offcanvas' %}" class="{% if request.path == '/ui-offcanvas' %}active{% endif %}">Offcanvas</a></li>
+                <li><a href="{% url 'ui_pagination' %}" class="{% if request.path == '/ui-pagination' %}active{% endif %}">Pagination</a></li>
+                <li><a href="{% url 'ui_popovers' %}" class="{% if request.path == '/ui-popovers' %}active{% endif %}">Popovers</a></li>
+                <li><a href="{% url 'ui_progress' %}" class="{% if request.path == '/ui-progress' %}active{% endif %}">Progress</a></li>
+                <li><a href="{% url 'ui_placeholders' %}" class="{% if request.path == '/ui-placeholders' %}active{% endif %}">Placeholders</a></li>
+                <li><a href="{% url 'ui_spinner' %}" class="{% if request.path == '/ui-spinner' %}active{% endif %}">Spinner</a></li>
+                <li><a href="{% url 'ui_sweetalerts' %}" class="{% if request.path == '/ui-sweetalerts' %}active{% endif %}">Sweet Alerts</a></li>
+                <li><a href="{% url 'ui_nav_tabs' %}" class="{% if request.path == '/ui-nav-tabs' %}active{% endif %}">Tabs</a></li>
+                <li><a href="{% url 'ui_toasts' %}" class="{% if request.path == '/ui-toasts' %}active{% endif %}">Toasts</a></li>
+                <li><a href="{% url 'ui_tooltips' %}" class="{% if request.path == '/ui-tooltips' %}active{% endif %}">Tooltips</a></li>
+                <li><a href="{% url 'ui_typography' %}" class="{% if request.path == '/ui-typography' %}active{% endif %}">Typography</a></li>
+                <li><a href="{% url 'ui_video' %}" class="{% if request.path == '/ui-video' %}active{% endif %}">Video</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                class="{% if request.path == '/ui-ribbon' or request.path == '/ui-clipboard' or request.path == '/ui-drag-drop' or request.path == '/ui-rangeslider' or request.path == '/ui-rating' or request.path == '/ui-text-editor' or request.path == '/ui-counter' or request.path == '/ui-scrollbar' or request.path == '/ui-stickynote' or request.path == '/ui-timeline' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-hierarchy-3"></i><span>Advanced UI</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'ui_ribbon' %}" class="{% if request.path == '/ui-ribbon' %}active{% endif %}">Ribbon</a></li>
+                <li><a href="{% url 'ui_clipboard' %}" class="{% if request.path == '/ui-clipboard' %}active{% endif %}">Clipboard</a></li>
+                <li><a href="{% url 'ui_drag_drop' %}" class="{% if request.path == '/ui-drag-drop' %}active{% endif %}">Drag & Drop</a></li>
+                <li><a href="{% url 'ui_rangeslider' %}" class="{% if request.path == '/ui-rangeslider' %}active{% endif %}">Range Slider</a></li>
+                <li><a href="{% url 'ui_rating' %}" class="{% if request.path == '/ui-rating' %}active{% endif %}">Rating</a></li>
+                <li><a href="{% url 'ui_text_editor' %}" class="{% if request.path == '/ui-text-editor' %}active{% endif %}">Text Editor</a></li>
+                <li><a href="{% url 'ui_counter' %}" class="{% if request.path == '/ui-counter' %}active{% endif %}">Counter</a></li>
+                <li><a href="{% url 'ui_scrollbar' %}" class="{% if request.path == '/ui-scrollbar' %}active{% endif %}">Scrollbar</a></li>
+                <li><a href="{% url 'ui_stickynote' %}" class="{% if request.path == '/ui-stickynote' %}active{% endif %}">Sticky Note</a></li>
+                <li><a href="{% url 'ui_timeline' %}" class="{% if request.path == '/ui-timeline' %}active{% endif %}">Timeline</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/chart_apex' or request.path == '/chart-c3' or request.path == '/chart-js' or request.path == '/chart-morris' or request.path == '/chart-flot' or request.path == '/chart-peity' %}subdrop active{% endif %}"
+                ><i class="ti ti-chart-line"></i> <span>Charts</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'chart_apex' %}" class="{% if request.path == '/chart-apex' %}active{% endif %}">Apex Charts</a></li>
+                <li><a href="{% url 'chart_c3' %}" class="{% if request.path == '/chart-c3' %}active{% endif %}">Chart C3</a></li>
+                <li><a href="{% url 'chart_js' %}" class="{% if request.path == '/chart-js' %}active{% endif %}">Chart Js</a></li>
+                <li><a href="{% url 'chart_morris' %}" class="{% if request.path == '/chart-morris' %}active{% endif %}">Morris Charts</a></li>
+                <li><a href="{% url 'chart_flot' %}" class="{% if request.path == '/chart-flot' %}active{% endif %}">Flot Charts</a></li>
+                <li><a href="{% url 'chart_peity' %}" class="{% if request.path == '/chart-peity' %}active{% endif %}">Peity Charts</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);" 
+              class="{% if request.path == '/icon-fontawesome' or request.path == '/icon-feather' or request.path == '/icon-ionic' or request.path == '/icon-material' or request.path == '/icon-pe7' or request.path == '/icon-simpleline' or request.path == '/icon-themify' or request.path == '/icon-weather' or request.path == '/icon-typicon' or request.path == '/icon-flag' %}subdrop active{% endif %}"
+                ><i class="ti ti-icons"></i> <span>Icons</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li><a href="{% url 'icon_fontawesome' %}" class="{% if request.path == '/icon-fontawesome' %}active{% endif %}">Fontawesome Icons</a></li>
+                <li><a href="{% url 'icon_feather' %}" class="{% if request.path == '/icon-feather' %}active{% endif %}">Feather Icons</a></li>
+                <li><a href="{% url 'icon_ionic' %}" class="{% if request.path == '/icon-ionic' %}active{% endif %}">Ionic Icons</a></li>
+                <li><a href="{% url 'icon_material' %}" class="{% if request.path == '/icon-material' %}active{% endif %}">Material Icons</a></li>
+                <li><a href="{% url 'icon_pe7' %}" class="{% if request.path == '/icon-pe7' %}active{% endif %}">Pe7 Icons</a></li>
+                <li><a href="{% url 'icon_simpleline' %}" class="{% if request.path == '/icon-simpleline' %}active{% endif %}">Simpleline Icons</a></li>
+                <li><a href="{% url 'icon_themify' %}" class="{% if request.path == '/icon-themify' %}active{% endif %}">Themify Icons</a></li>
+                <li><a href="{% url 'icon_weather' %}" class="{% if request.path == '/icon-weather' %}active{% endif %}">Weather Icons</a></li>
+                <li><a href="{% url 'icon_typicon' %}" class="{% if request.path == '/icon-typicon' %}active{% endif %}">Typicon Icons</a></li>
+                <li><a href="{% url 'icon_flag' %}" class="{% if request.path == '/icon-flag' %}active{% endif %}">Flag Icons</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/form-basic-inputs' or request.path == '/form-checkbox-radios' or request.path == '/form-input-groups' or request.path == '/form-grid-gutters' or request.path == '/form-select' or request.path == '/form-mask' or request.path == '/form-fileupload' or request.path == '/form-horizontal' or request.path == '/form-vertical' or request.path == '/form-floating-labels' or request.path == '/form-validation' or request.path == '/form-select2' or request.path == '/form-wizard' %}subdrop active{% endif %}"
+              >
+                <i class="ti ti-input-search"></i><span>Forms</span
+                ><span class="menu-arrow"></span>
+              </a>
+              <ul>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                  class="{% if request.path == '/form-basic-inputs' or request.path == '/form-checkbox-radios' or request.path == '/form-input-groups' or request.path == '/form-grid-gutters' or request.path == '/form-select' or request.path == '/form-mask' or request.path == '/form-fileupload' %}subdrop active{% endif %}"
+                    >Form Elements<span class="menu-arrow inside-submenu"></span
+                  ></a>
+                  <ul>
+                    <li><a href="{% url 'form_basic_inputs' %}" class="{% if request.path == '/form-basic-inputs' %}active{% endif %}">Basic Inputs</a></li>
+                    <li>
+                      <a href="{% url 'form_checkbox_radios' %}" class="{% if request.path == '/form-checkbox-radios' %}active{% endif %}">Checkbox & Radios</a>
+                    </li>
+                    <li><a href="{% url 'form_input_groups' %}" class="{% if request.path == '/form-input-groups' %}active{% endif %}">Input Groups</a></li>
+                    <li><a href="{% url 'form_grid_gutters' %}" class="{% if request.path == '/form-grid-gutters' %}active{% endif %}">Grid & Gutters</a></li>
+                    <li><a href="{% url 'form_select' %}" class="{% if request.path == '/form-select' %}active{% endif %}">Form Select</a></li>
+                    <li><a href="{% url 'form_mask' %}" class="{% if request.path == '/form-mask' %}active{% endif %}">Input Masks</a></li>
+                    <li><a href="{% url 'form_fileupload' %}" class="{% if request.path == '/form-fileupload' %}active{% endif %}">File Uploads</a></li>
+                  </ul>
+                </li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                  class="{% if request.path == '/form-horizontal' or request.path == '/form-vertical' or request.path == '/form-floating-labels' %}subdrop active{% endif %}"
+                    >Layouts<span class="menu-arrow inside-submenu"></span
+                  ></a>
+                  <ul>
+                    <li><a href="{% url 'form_horizontal' %}" class="{% if request.path == '/form-horizontal' %}active{% endif %}">Horizontal Form</a></li>
+                    <li><a href="{% url 'form_vertical' %}" class="{% if request.path == '/form-vertical' %}active{% endif %}">Vertical Form</a></li>
+                    <li>
+                      <a href="{% url 'form_floating_labels' %}" class="{% if request.path == '/form-floating-labels' %}active{% endif %}">Floating Labels</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'form_validation' %}" class="{% if request.path == '/form-validation' %}active{% endif %}">Form Validation</a></li>
+                <li><a href="{% url 'form_select2' %}" class="{% if request.path == '/form-select2' %}active{% endif %}">Select2</a></li>
+                <li><a href="{% url 'form_wizard' %}" class="{% if request.path == '/form-wizard' %}active{% endif %}">Form Wizard</a></li>
+              </ul>
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+              class="{% if request.path == '/tables-basic' or request.path == '/data-tables' %}subdrop active{% endif %}"
+                ><i class="ti ti-table-plus"></i><span>Tables</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="{% url 'tables_basic' %}" class="{% if request.path == '/tables-basic' %}active{% endif %}">Basic Tables </a></li>
+                <li><a href="{% url 'data_tables' %}" class="{% if request.path == '/data-tables' %}active{% endif %}">Data Table </a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h6 class="submenu-hdr"><span>Help</span></h6>
+          <ul>
+            <li>
+              <a
+                href="https://preschool.dreamstechnologies.com/documentation/index.html"
+                ><i class="ti ti-file-text"></i><span>Documentation</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://preschool.dreamstechnologies.com/documentation/changelog.html"
+                ><i class="ti ti-exchange"></i><span>Changelog</span
+                ><span
+                  class="badge badge-primary badge-xs text-white fs-10 ms-auto"
+                  >v1.8.3</span
+                ></a
+              >
+            </li>
+            <li class="submenu">
+              <a href="javascript:void(0);"
+                ><i class="ti ti-menu-2"></i><span>Multi Level</span
+                ><span class="menu-arrow"></span
+              ></a>
+              <ul>
+                <li><a href="javascript:void(0);">Multilevel 1</a></li>
+                <li class="submenu submenu-two">
+                  <a href="javascript:void(0);"
+                    >Multilevel 2<span class="menu-arrow inside-submenu"></span
+                  ></a>
+                  <ul>
+                    <li><a href="javascript:void(0);">Multilevel 2.1</a></li>
+                    <li class="submenu submenu-two submenu-three">
+                      <a href="javascript:void(0);"
+                        >Multilevel 2.2<span
+                          class="menu-arrow inside-submenu inside-submenu-two"
+                        ></span
+                      ></a>
+                      <ul>
+                        <li>
+                          <a href="javascript:void(0);">Multilevel 2.2.1</a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);">Multilevel 2.2.2</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="javascript:void(0);">Multilevel 3</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- /Sidebar -->
+{% endblock sidebar %}

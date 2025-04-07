@@ -1,0 +1,349 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <!-- Page Header -->
+        <div class="col-md-12">
+          <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+            {% block title %}
+              {% include 'partials/title.html' with title='Teacher Details' text='Dashboard' textone='Teachers' texttwo='Teacher Details' %}
+            {% endblock %}
+            <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+              <a href="#" class="btn btn-light me-2 mb-2" data-bs-toggle="modal" data-bs-target="#login_detail"><i class="ti ti-lock me-2"></i>Login Details</a>
+              <a href="{% url 'edit_teacher' %}" class="btn btn-primary d-flex align-items-center mb-2"><i class="ti ti-edit-circle me-2"></i>Edit Teacher</a>
+            </div>
+          </div>
+        </div>
+        <!-- /Page Header -->
+
+        <!-- Student Information -->
+        {% block teachersidebar %}
+          {% include 'pages/peoples/teachers/teacher-details/teacher-sidebar.html' %}
+        {% endblock %}
+        <!-- /Student Information -->
+
+        <div class="col-xxl-9 col-xl-8">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- List -->
+              {% block teachernavtabs %}
+                {% include 'pages/peoples/teachers/teacher-details/teacher-nav-bar.html' %}
+              {% endblock %}
+              <!-- /List -->
+
+              <!-- Parents Information -->
+              <div class="card">
+                <div class="card-header">
+                  <h5>Profile Details</h5>
+                </div>
+                <div class="card-body">
+                  <div class="border rounded p-3 pb-0">
+                    <div class="row">
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">Father’s Name</p>
+                          <p>Francis Saviour</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">Mother Name</p>
+                          <p>Stella Bruce</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">DOB</p>
+                          <p>25 Jan 1992</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">Martial Status</p>
+                          <p>Single</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">Qualification</p>
+                          <p>MBA</p>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-lg-4">
+                        <div class="mb-3">
+                          <p class="text-dark fw-medium mb-1">Experience</p>
+                          <p>2 Years</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Parents Information -->
+            </div>
+
+            <!-- Documents -->
+            <div class="col-xxl-6 d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5>Documents</h5>
+                </div>
+                <div class="card-body">
+                  <div class="bg-light-300 border rounded d-flex align-items-center justify-content-between mb-3 p-2">
+                    <div class="d-flex align-items-center overflow-hidden">
+                      <span class="avatar avatar-md bg-white rounded flex-shrink-0 text-default"><i class="ti ti-pdf fs-15"></i></span>
+                      <div class="ms-2">
+                        <p class="text-truncate fw-medium text-dark">Resume.pdf</p>
+                      </div>
+                    </div>
+                    <a href="#" class="btn btn-dark btn-icon btn-sm"><i class="ti ti-download"></i></a>
+                  </div>
+                  <div class="bg-light-300 border rounded d-flex align-items-center justify-content-between p-2">
+                    <div class="d-flex align-items-center overflow-hidden">
+                      <span class="avatar avatar-md bg-white rounded flex-shrink-0 text-default"><i class="ti ti-pdf fs-15"></i></span>
+                      <div class="ms-2">
+                        <p class="text-truncate fw-medium text-dark">Joining Letter.pdf</p>
+                      </div>
+                    </div>
+                    <a href="#" class="btn btn-dark btn-icon btn-sm"><i class="ti ti-download"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Documents -->
+
+            <!-- Address -->
+            <div class="col-xxl-6 d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5>Address</h5>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="avatar avatar-md bg-light-300 rounded me-2 flex-shrink-0 text-default"><i class="ti ti-map-pin-up"></i></span>
+                    <div>
+                      <p class="text-dark fw-medium mb-1">Current Address</p>
+                      <p>3495 Red Hawk Road, Buffalo Lake, MN 55314</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <span class="avatar avatar-md bg-light-300 rounded me-2 flex-shrink-0 text-default"><i class="ti ti-map-pins"></i></span>
+                    <div>
+                      <p class="text-dark fw-medium mb-1">Permanent Address</p>
+                      <p>3495 Red Hawk Road, Buffalo Lake, MN 55314</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Address -->
+
+            <!-- Previous School Details -->
+            <div class="col-xxl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5>Previous School Details</h5>
+                </div>
+                <div class="card-body pb-1">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Previous School Name</p>
+                        <p>Oxford Matriculation, USA</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">School Address</p>
+                        <p>1852 Barnes Avenue, Cincinnati, OH 45202</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Phone Number</p>
+                        <p>+1 35676 45556</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Previous School Details -->
+
+            <!-- Bank Details -->
+            <div class="col-xxl-6 d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5>Bank Details</h5>
+                </div>
+                <div class="card-body pb-1">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Bank Name</p>
+                        <p>Bank of America</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Branch</p>
+                        <p>Cincinnati</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">IFSC</p>
+                        <p>BOA83209832</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Bank Details -->
+
+            <!-- Medical History -->
+            <div class="col-xxl-6 d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5>Work Details</h5>
+                </div>
+                <div class="card-body pb-1">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Contract Type</p>
+                        <p>Permanent</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Shift</p>
+                        <p>Morning</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Work Location</p>
+                        <p>2nd Floor</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Medical History -->
+
+            <!-- Medical History -->
+            <div class="col-xxl-12 d-flex">
+              <div class="card flex-fill">
+                <div class="card-header">
+                  <h5>Social Media</h5>
+                </div>
+                <div class="card-body pb-1">
+                  <div class="row row-cols-xxl-5 row-cols-xl-3">
+                    <div class="col">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Facebook</p>
+                        <p>www.facebook.com</p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Twitter</p>
+                        <p>www.twitter.com</p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Linkedin</p>
+                        <p>www.linkedin.com</p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Youtube</p>
+                        <p>www.youtube.com</p>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <p class="mb-1 text-dark fw-medium">Instagram</p>
+                        <p>www.instagram.com</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Medical History -->
+
+            <!-- Other Info -->
+            <div class="col-xxl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h5>Other Info</h5>
+                </div>
+                <div class="card-body">
+                  <p>Depending on the specific needs of your organization or system, additional information may be collected or tracked. It's important to ensure that any data collected complies with privacy regulations and policies to protect students' sensitive information.</p>
+                </div>
+              </div>
+            </div>
+            <!-- /Other Info -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Login Details -->
+<div class="modal fade" id="login_detail">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Login Details</h4>
+        <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>		
+      <div class="modal-body">		
+        <div class="student-detail-info">
+          <span class="student-img"><img src="{% static 'assets/img/teachers/teacher-01.jpg' %}" alt="img"></span>
+          <div class="name-info">
+            <h6>Teresa <span>III, A</span></h6>
+          </div>
+        </div>
+        <div class="table-responsive custom-table no-datatable_length">
+          <table class="table datanew">
+            <thead class="thead-light">
+              <tr>
+                <th>User Type</th>
+                <th>User Name</th>
+                <th>Password </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Teacher</td>
+                <td>teacher20</td>
+                <td>teacher@53</td>
+              </tr>
+              <tr>
+                <td>Parent</td>
+                <td>parent53</td>
+                <td>parent@53</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>			
+      <div class="modal-footer">
+        <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Login Details -->	
+
+{% endblock %}

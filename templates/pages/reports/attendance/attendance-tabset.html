@@ -1,0 +1,28 @@
+<div class="list-tab">
+    <ul>
+        <li>
+            <a href="{% url 'attendance_report' %}" class="{% if request.path == '/attendance-report' %}active{% endif %}">Attendance Report</a>
+        </li>
+        <li>
+            <a href="{% url 'student_attendance_type' %}" class="{% if request.path == '/student-attendance-type' %}active{% endif %}">Students Attendance Type</a>
+        </li>
+        <li>
+            <a href="{% url 'daily_attendance' %}" class="{% if request.path == '/daily-attendance' %}active{% endif %}">Daily Attendance</a>
+        </li>
+        <li>
+            <a href="{% url 'student_day_wise' %}" class="{% if request.path == '/student-day-wise' %}active{% endif %}">Student Day Wise</a>
+        </li>
+        <li>
+            <a href="{% url 'teacher_day_wise' %}" class="{% if request.path == '/teacher-day-wise' %}active{% endif %}">Teacher Day Wise</a>
+        </li>
+        <li>
+            <a href="{% url 'teacher_report' %}" class="{% if request.path == '/teacher-report' %} active {% endif %}">Teacher Report</a>
+        </li>
+        <li>
+            <a href="{% url 'staff_day_wise' %}" class="{% if request.path == '/staff-day-wise' %} active {% endif %}">Staff Day Wise</a>
+        </li>
+        <li>
+            <a href="{% url 'staff_report' %}" class="{% if request.path == '/staff-report' %} active {% endif %}">Staff Report</a>
+        </li>
+    </ul>
+</div>

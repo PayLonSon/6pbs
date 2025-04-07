@@ -1,0 +1,9 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'email_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'email_settings' %}active{% endif %}">Email Settings</a>
+    <a href="{% url 'email_templates' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'email_templates' %}active{% endif %}">Email Templates</a>
+    <a href="{% url 'sms_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'sms_settings' %}active{% endif %}">SMS Settings</a>
+    <a href="{% url 'otp_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'otp_settings' %}active{% endif %}">OTP</a>
+    <a href="{% url 'gdpr_cookies' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'gdpr_cookies' %}active{% endif %}">GDPR Cookies</a>
+  </div>
+</div>

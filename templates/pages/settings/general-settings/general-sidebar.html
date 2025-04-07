@@ -1,0 +1,8 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'profile_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'profile_settings' %}active{% endif %}">Profile Settings</a>
+    <a href="{% url 'security_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'security_settings' %}active{% endif %}">Security Settings</a>
+    <a href="{% url 'notifications_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'notifications_settings' %}active{% endif %}">Notifications</a>
+    <a href="{% url 'connected_apps' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'connected_apps' %}active{% endif %}">Connected Apps</a>
+  </div>
+</div>

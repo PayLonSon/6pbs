@@ -1,0 +1,20 @@
+{% load static %}
+
+<ul class="nav nav-tabs nav-tabs-bottom mb-4">
+    <li>
+      <a href="{% url 'teacher_details' %}" class="nav-link {% if request.resolver_match.url_name == 'teacher_details' %}active{% endif %}"><i class="ti ti-school me-2"></i>Teacher Details</a>
+    </li>
+    <li>
+      <a href="{% url 'routine_teachers' %}" class="nav-link {% if request.resolver_match.url_name == 'routine_teachers' %}active{% endif %}"><i class="ti ti-table-options me-2"></i>Routine</a>
+    </li>
+    <li>
+      <a href="{% url 'teacher_leaves' %}" class="nav-link {% if request.resolver_match.url_name == 'teacher_leaves' %}active{% endif %}"><i class="ti ti-calendar-due me-2"></i>Leave & Attendance</a>
+    </li>
+    <li>
+      <a href="{% url 'teacher_salary' %}" class="nav-link {% if request.resolver_match.url_name == 'teacher_salary' %}active{% endif %}"><i class="ti ti-report-money me-2"></i>Salary</a>
+    </li>
+    <li>
+      <a href="{% url 'teacher_library' %}" class="nav-link {% if request.resolver_match.url_name == 'teacher_library' %}active{% endif %}"><i class="ti ti-bookmark-edit me-2"></i>Library</a>
+    </li>
+  </ul>
+  
