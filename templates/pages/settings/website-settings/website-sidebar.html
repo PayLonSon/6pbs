@@ -1,0 +1,10 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'company_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'company_settings' %}active{% endif %}">Company Settings</a>
+    <a href="{% url 'localization' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'localization' %}active{% endif %}">Localization</a>
+    <a href="{% url 'prefixes' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'prefixes' %}active{% endif %}">Prefixes</a>
+    <a href="{% url 'preferences' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'preferences' %}active{% endif %}">Preferences</a>
+    <a href="{% url 'social_authentication' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'social_authentication' %}active{% endif %}">Social Authentication</a>
+    <a href="{% url 'language' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'language' %}active{% endif %}">Language</a>
+  </div>
+</div>

@@ -1,0 +1,332 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    <div class="content">
+      <!-- Page Header -->
+      <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+        {% block title %}
+          {% include 'partials/title.html' with title='Cities' text='Dashboard' textone='Content' texttwo='Cities' %}
+        {% endblock %}
+        <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+          <div class="pe-1 mb-2">
+            <a href="#" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Refresh" data-bs-original-title="Refresh"><i class="ti ti-refresh"></i></a>
+          </div>
+          <div class="pe-1 mb-2">
+            <button type="button" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Print" data-bs-original-title="Print"><i class="ti ti-printer"></i></button>
+          </div>
+          <div class="dropdown me-2 mb-2">
+            <a href="javascript:void(0);" class="dropdown-toggle btn btn-light fw-medium d-inline-flex align-items-center" data-bs-toggle="dropdown"><i class="ti ti-file-export me-2"></i>Export</a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel</a>
+              </li>
+            </ul>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_cities"><i class="ti ti-square-rounded-plus-filled me-2"></i>Add Cities</a>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header -->
+
+      <!-- Filter Section -->
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+          <h4 class="mb-3">Cities List</h4>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="input-icon-start mb-3 me-2 position-relative">
+              <span class="icon-addon"><i class="ti ti-calendar"></i></span>
+              <input type="text" class="form-control date-range bookingrange" placeholder="Select" value="Academic Year : 2024 / 2025" />
+            </div>
+            <div class="dropdown mb-3 me-2">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ti ti-filter me-2"></i>Filter</a>
+              <div class="dropdown-menu drop-width">
+                <form action="cities.html">
+                  <div class="d-flex align-items-center border-bottom p-3">
+                    <h4>Filter</h4>
+                  </div>
+                  <div class="p-3 border-bottom">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">City</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>Los Angeles</option>
+                            <option>New York City</option>
+                            <option>Houston</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">State</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>California</option>
+                            <option>New York</option>
+                            <option>Texas</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-0">
+                          <label class="form-label">Country</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>United States</option>
+                            <option>Germany</option>
+                            <option>Canada</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-0">
+                          <label class="form-label">Status</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-3 d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light me-3">Reset</a>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="dropdown mb-3">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown"><i class="ti ti-sort-ascending-2 me-2"></i>Sort by A-Z</a>
+              <ul class="dropdown-menu p-3">
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1 active">Ascending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Descending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Viewed</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cities List -->
+        <div class="card-body p-0 py-3">
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th class="no-sort">
+                    <div class="form-check form-check-md">
+                      <input class="form-check-input" type="checkbox" id="select-all" />
+                    </div>
+                  </th>
+                  <th>ID</th>
+                  <th>City Name</th>
+                  <th>State Name</th>
+                  <th>Country Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for record in cities %}
+                  <tr>
+                    <td>
+                      <div class="form-check form-check-md">
+                        <input class="form-check-input" type="checkbox" />
+                      </div>
+                    </td>
+                    <td>
+                      <a href="#" class="link-primary">{{ record.ID }}</a>
+                    </td>
+                    <td>{{ record.CityName }}</td>
+                    <td>{{ record.StateName }}</td>
+                    <td>{{ record.CountryName }}</td>
+                    <td>
+                      <span class="badge {% if record.Status == 'Active' %}                                                                                        
+                    badge-soft-success
+                        {% else %}                                                                                                      
+                    badge-soft-danger
+                        {% endif %} d-inline-flex align-items-center">
+                        <i class="ti ti-circle-filled fs-5 me-1"></i>{{ record.Status }}
+                      </span>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <div class="dropdown">
+                          <a href="#" class="btn btn-white btn-icon btn-sm d-flex align-items-center justify-content-center rounded-circle p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-dots-vertical fs-14"></i></a>
+                          <ul class="dropdown-menu dropdown-menu-right p-3">
+                            <li>
+                              <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#edit_city"><i class="ti ti-edit-circle me-2"></i>Edit</a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="ti ti-trash-x me-2"></i>Delete</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /Cities List -->
+        </div>
+      </div>
+      <!-- /Filter Section -->
+    </div>
+  </div>
+  <!-- /Page Wrapper -->
+
+  <!-- Add Cities -->
+  <div class="modal fade" id="add_cities">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add City</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="cities.html">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">City Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">State Name</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option>California</option>
+                    <option>New York</option>
+                    <option>Texas</option>
+                    <option>Bavaria</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Country Name</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option>United States</option>
+                    <option>Germany</option>
+                    <option>Canada</option>
+                    <option>Australia</option>
+                  </select>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="status-title">
+                    <h5>Status</h5>
+                    <p>Change the Status by toggle</p>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switch-sm" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add City</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Add Cities -->
+
+  <!-- Edit Cities -->
+  <div class="modal fade" id="edit_city">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit City</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="cities.html">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">City Name</label>
+                  <input type="text" class="form-control" placeholder="Enter State Name" value="Los Angeles" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">State Name</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option selected>Los Angeles</option>
+                    <option>New York</option>
+                    <option>Texas</option>
+                    <option>Bavaria</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Country Name</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option selected>United States</option>
+                    <option>Germany</option>
+                    <option>Canada</option>
+                    <option>Australia</option>
+                  </select>
+                </div>
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="status-title">
+                    <h5>Status</h5>
+                    <p>Change the Status by toggle</p>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switch-sm2" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Edit Cities -->
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="delete-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="cities.html">
+          <div class="modal-body text-center">
+            <span class="delete-icon"><i class="ti ti-trash-x"></i></span>
+            <h4>Confirm Deletion</h4>
+            <p>You want to delete all the marked items, this cant be undone once you delete.</p>
+            <div class="d-flex justify-content-center">
+              <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Delete Modal -->
+{% endblock %}

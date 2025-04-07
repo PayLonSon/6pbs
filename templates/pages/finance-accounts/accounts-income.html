@@ -1,0 +1,508 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+    <div class="content">
+      <!-- Page Header -->
+      <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+        {% block title %}
+          {% include 'partials/title.html' with title='Income' text='Dashboard' textone='Finance & Accounts' texttwo='Income' %}
+        {% endblock %}
+        <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+          <div class="pe-1 mb-2">
+            <a href="#" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Refresh" data-bs-original-title="Refresh"><i class="ti ti-refresh"></i></a>
+          </div>
+          <div class="pe-1 mb-2">
+            <button type="button" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Print" data-bs-original-title="Print"><i class="ti ti-printer"></i></button>
+          </div>
+          <div class="dropdown me-2 mb-2">
+            <a href="javascript:void(0);" class="dropdown-toggle btn btn-light fw-medium d-inline-flex align-items-center" data-bs-toggle="dropdown"><i class="ti ti-file-export me-2"></i>Export</a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);" class="dropdown-item rounded-1"><i class="ti ti-file-type-xls me-1"></i>Export as Excel</a>
+              </li>
+            </ul>
+          </div>
+          <div class="mb-2">
+            <a href="#" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#add_income"><i class="ti ti-square-rounded-plus me-2"></i>Add Income</a>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Header -->
+
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+          <h4 class="mb-3">Income List</h4>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="input-icon-start mb-3 me-2 position-relative">
+              <span class="icon-addon"><i class="ti ti-calendar"></i></span>
+              <input type="text" class="form-control date-range bookingrange" placeholder="Select" value="Academic Year : 2024 / 2025" />
+            </div>
+            <div class="dropdown mb-3 me-2">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ti ti-filter me-2"></i>Filter</a>
+              <div class="dropdown-menu drop-width">
+                <form action="accounts-income">
+                  <div class="d-flex align-items-center border-bottom p-3">
+                    <h4>Filter</h4>
+                  </div>
+                  <div class="p-3 pb-0 border-bottom">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Income Name</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>April Month Fees</option>
+                            <option>STEM Program Grant</option>
+                            <option>Alumni Scholarship</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Source</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>Tuition Fees</option>
+                            <option>Government Grants</option>
+                            <option>Donations</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="mb-3">
+                          <label class="form-label">Invoice Number</label>
+                          <select class="select">
+                            <option>Select</option>
+                            <option>INV681537</option>
+                            <option>INV681536</option>
+                            <option>INV681535</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-3 d-flex align-items-center justify-content-end">
+                    <a href="#" class="btn btn-light me-3">Reset</a>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="dropdown mb-3">
+              <a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle" data-bs-toggle="dropdown"><i class="ti ti-sort-ascending-2 me-2"></i>Sort by A-Z</a>
+              <ul class="dropdown-menu p-3">
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1 active">Ascending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Descending</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Viewed</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="dropdown-item rounded-1">Recently Added</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body p-0 py-3">
+          <!-- Income List -->
+          <div class="custom-datatable-filter table-responsive">
+            <table class="table datatable">
+              <thead class="thead-light">
+                <tr>
+                  <th class="no-sort">
+                    <div class="form-check form-check-md">
+                      <input class="form-check-input" type="checkbox" id="select-all" />
+                    </div>
+                  </th>
+                  <th>ID</th>
+                  <th>Income Name</th>
+                  <th>Description</th>
+                  <th>Source</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Invoice No</th>
+                  <th>Payment Method</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for record in accounts_income %}
+                  <tr>
+                    <td>
+                      <div class="form-check form-check-md">
+                        <input class="form-check-input" type="checkbox" />
+                      </div>
+                    </td>
+                    <td>
+                      <a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#view_invoice">{{ record.ID }}</a>
+                    </td>
+                    <td>{{ record.Income_Name }}</td>
+                    <td>{{ record.Description }}</td>
+                    <td>{{ record.Source }}</td>
+                    <td>{{ record.Date }}</td>
+                    <td>{{ record.Amount }}</td>
+                    <td>
+                      <a href="#" class="link-primary" data-bs-toggle="modal" data-bs-target="#view_invoice">{{ record.Invoice_No }}</a>
+                    </td>
+                    <td>{{ record.Payment_Method }}</td>
+                    <td>
+                      <div class="dropdown">
+                        <a href="#" class="btn btn-white btn-icon btn-sm d-flex align-items-center justify-content-center rounded-circle p-0" data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-dots-vertical fs-14"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right p-3">
+                          <li>
+                            <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#edit_income"><i class="ti ti-edit-circle me-2"></i>Edit</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item rounded-1" href="#" data-bs-toggle="modal" data-bs-target="#delete-modal"><i class="ti ti-trash-x me-2"></i>Delete</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- /Income List -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Wrapper -->
+
+  <!-- Add Income -->
+  <div class="modal fade" id="add_income">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Income</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="accounts-income">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Income Name</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Source</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Date of Birth</label>
+                  <div class="input-icon position-relative">
+                    <span class="input-icon-addon"><i class="ti ti-calendar"></i></span>
+                    <input type="text" class="form-control datetimepicker" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Amount</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Invoice No</label>
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Payment Method</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option>Cash</option>
+                    <option>Credit</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-0">
+                  <label class="form-label">Description</label>
+                  <textarea rows="4" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Add Income</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Add Income -->
+
+  <!-- Edit Income -->
+  <div class="modal fade" id="edit_income">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Income</h4>
+          <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+        <form action="accounts-income">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Income Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Income Name" value="April Month Fees" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label">Source</label>
+                  <input type="text" class="form-control" placeholder="Enter Source" value="Tuition Fees" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Date of Birth</label>
+                  <input type="text" class="form-control datetimepicker" value="15/12/1992" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Amount</label>
+                  <input type="text" class="form-control" placeholder="Enter Amount" value="$15,000" />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Invoice No</label>
+                  <input type="text" class="form-control" placeholder="Enter Invoice No" value="INV681537" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Payment Method</label>
+                  <select class="select">
+                    <option>Select</option>
+                    <option selected>Cash</option>
+                    <option>Credit</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="mb-0">
+                  <label class="form-label">Description</label>
+                  <textarea rows="4" class="form-control" placeholder="text">Tuition for Term 1, Class II</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Edit Income -->
+
+  <!-- Delete Modal -->
+  <div class="modal fade" id="delete-modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="accounts-income">
+          <div class="modal-body text-center">
+            <span class="delete-icon"><i class="ti ti-trash-x"></i></span>
+            <h4>Confirm Deletion</h4>
+            <p>You want to delete all the marked items, this cant be undone once you delete.</p>
+            <div class="d-flex justify-content-center">
+              <a href="javascript:void(0);" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</a>
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Delete Modal -->
+
+  <!-- View Modal -->
+  <div class="modal fade" id="view_invoice">
+    <div class="modal-dialog modal-dialog-centered modal-xl invoice-modal">
+      <div class="modal-content">
+        <div class="modal-wrapper">
+          <div class="invoice-popup-head d-flex align-items-center justify-content-between mb-4">
+            <span><img src="{% static 'assets/img/logo.svg' %}" alt="Img" /></span>
+            <div class="popup-title">
+              <h2>UNIVERSITY NAME</h2>
+              <p>Original For Recipient</p>
+            </div>
+          </div>
+          <div class="tax-info mb-2">
+            <div class="mb-4 text-center">
+              <h1>Tax Invoice</h1>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Student Name :</h5>
+                  <h6>Walter Roberson</h6>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Student ID :</h5>
+                  <h6>DD465123</h6>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Term :</h5>
+                  <h6>Term 1</h6>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Invoice No :</h5>
+                  <h6>INV681531</h6>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Invoice Date :</h5>
+                  <h6>24 Apr 2024</h6>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="tax-invoice-info d-flex align-items-center justify-content-between">
+                  <h5>Due Date :</h5>
+                  <h6>30 Apr 2024</h6>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="mb-1">Bill To :</h6>
+              <p>
+                <span class="text-dark">Walter Roberson</span> <br />
+                299 Star Trek Drive, Panama City, Florida, 32405, USA. <br />
+                walter@gmail.com <br />
+                +45 5421 4523
+              </p>
+            </div>
+            <div class="invoice-product-table">
+              <div class="table-responsive invoice-table">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Description</th>
+                      <th>Due Date</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Semester Fees</td>
+                      <td>25 Apr 2024</td>
+                      <td>$5,000</td>
+                    </tr>
+                    <tr>
+                      <td>Exam Fees</td>
+                      <td>25 Apr 2024</td>
+                      <td>$1000</td>
+                    </tr>
+                    <tr>
+                      <td>Transport Fees</td>
+                      <td>25 Apr 2024</td>
+                      <td>$4,000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <h5 class="mb-1">Important Note:</h5>
+                  <p class="text-dark mb-0">Delivery dates are not guaranteed and Seller has</p>
+                  <p class="text-dark">no liability for damages that may be incurred due to any delay. has</p>
+                </div>
+                <div>
+                  <h5 class="mb-1">Total amount ( in words):</h5>
+                  <p class="text-dark fw-medium">USD Ten Thousand One Hundred Sixty Five Only</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="total-amount-tax">
+                  <ul>
+                    <li class="fw-medium text-dark">Subtotal</li>
+
+                    <li class="fw-medium text-dark">Discount 0%</li>
+
+                    <li class="fw-medium text-dark">IGST 18.0%</li>
+                  </ul>
+                  <ul>
+                    <li>$10,000.00</li>
+                    <li>+ $0.00</li>
+                    <li>$10,000.00</li>
+                  </ul>
+                </div>
+                <div class="total-amount-tax mb-3">
+                  <ul class="total-amount">
+                    <li class="text-dark">Amount Payable</li>
+                  </ul>
+                  <ul class="total-amount">
+                    <li class="text-dark">$10,165.00</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="payment-info">
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 pt-4">
+                  <h5 class="mb-2">Payment Info:</h5>
+                  <p class="mb-1">
+                    Debit Card : <span class="fw-medium text-dark">465 *************645</span>
+                  </p>
+                  <p class="mb-0">
+                    Amount : <span class="fw-medium text-dark">$10,165</span>
+                  </p>
+                </div>
+                <div class="col-lg-6 text-end mb-4 pt-4">
+                  <h6 class="mb-2">For Dreamguys</h6>
+                  <img src="{% static 'assets/img/icons/signature.svg' %}" alt="Img" />
+                </div>
+              </div>
+            </div>
+            <div class="border-bottom text-center pt-4 pb-4">
+              <span class="text-dark fw-medium">Terms & Conditions :</span>
+              <p>Here we can write a additional notes for the client to get a better understanding of this invoice.</p>
+            </div>
+            <p class="text-center pt-3">Thanks for your Business</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /View Modal -->
+{% endblock %}

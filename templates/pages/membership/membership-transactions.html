@@ -1,0 +1,219 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content">
+				<!-- Page Header -->
+				<div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+                    {% block title %}
+                    {% include "partials/title.html" with title="Transactions" text="Dashboard" textone="Membership" texttwo="Transactions" %}
+                    {% endblock title %}
+					<div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+						<div class="pe-1 mb-2">
+							<a href="#" class="btn btn-outline-light bg-white btn-icon me-1" data-bs-toggle="tooltip"
+								data-bs-placement="top" aria-label="Refresh" data-bs-original-title="Refresh">
+								<i class="ti ti-refresh"></i>
+							</a>
+						</div>
+						<div class="pe-1 mb-2">
+							<button type="button" class="btn btn-outline-light bg-white btn-icon me-1"
+								data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Print"
+								data-bs-original-title="Print">
+								<i class="ti ti-printer"></i>
+							</button>
+						</div>
+						<div class="dropdown me-2 mb-2">
+							<a href="javascript:void(0);"
+								class="dropdown-toggle btn btn-light fw-medium d-inline-flex align-items-center"
+								data-bs-toggle="dropdown">
+								<i class="ti ti-file-export me-2"></i>Export
+							</a>
+							<ul class="dropdown-menu  dropdown-menu-end p-3">
+								<li>
+									<a href="javascript:void(0);" class="dropdown-item rounded-1"><i
+											class="ti ti-file-type-pdf me-1"></i>Export as PDF</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="dropdown-item rounded-1"><i
+											class="ti ti-file-type-xls me-1"></i>Export as Excel </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Page Header -->
+
+				<!-- Filter Section -->
+				<div class="card">
+					<div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+						<h4 class="mb-3">Transactions List</h4>
+						<div class="d-flex align-items-center flex-wrap">
+							<div class="input-icon-start mb-3 me-2 position-relative">
+								<span class="icon-addon">
+									<i class="ti ti-calendar"></i>
+								</span>
+								<input type="text" class="form-control date-range bookingrange" placeholder="Select"
+									value="Academic Year : 2024 / 2025">
+							</div>
+							<div class="dropdown mb-3 me-2">
+								<a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle"
+									data-bs-toggle="dropdown" data-bs-auto-close="outside"><i
+										class="ti ti-filter me-2"></i>Filter</a>
+								<div class="dropdown-menu drop-width">
+									<form action="membership-transactions">
+										<div class="d-flex align-items-center border-bottom p-3">
+											<h4>Filter</h4>
+										</div>
+										<div class="p-3 border-bottom">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="mb-3">
+														<label class="form-label">Provider Name</label>
+														<select class="select">
+															<option>Select</option>
+															<option>Green Valley High School</option>
+															<option>Riverside Academy</option>
+															<option>Sunshine School</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="mb-0">
+														<label class="form-label">Plan Type</label>
+														<select class="select">
+															<option>Select</option>
+															<option>Starter</option>
+															<option>Enterprise</option>
+															<option>Starter</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="p-3 d-flex align-items-center justify-content-end">
+											<a href="#" class="btn btn-light me-3">Reset</a>
+											<button type="submit" class="btn btn-primary">Apply</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="dropdown mb-3">
+								<a href="javascript:void(0);" class="btn btn-outline-light bg-white dropdown-toggle"
+									data-bs-toggle="dropdown"><i class="ti ti-sort-ascending-2 me-2"></i>Sort by A-Z
+								</a>
+								<ul class="dropdown-menu p-3">
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1 active">
+											Ascending
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">
+											Descending
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">
+											Recently Viewed
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item rounded-1">
+											Recently Added
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="card-body p-0 py-3">
+						<!-- Transaction List -->
+						<div class="custom-datatable-filter table-responsive">
+							<table class="table datatable">
+								<thead class="thead-light">
+									<tr>
+										<th class="no-sort">
+											<div class="form-check form-check-md">
+												<input class="form-check-input" type="checkbox" id="select-all">
+											</div>
+										</th>
+										<th>ID</th>
+										<th>Provider Name</th>
+										<th>Plan Type</th>
+										<th>Transaction Date</th>
+										<th>Amount</th>
+										<th>Payment Method</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+                                    {% for record in membership_transactions %}
+									<tr>
+										<td>
+											<div class="form-check form-check-md">
+												<input class="form-check-input" type="checkbox">
+											</div>
+										</td>
+										<td><a href="#" class="link-primary">{{record.ID}}</a></td>
+										<td>
+											{{record.Provider_Name}}
+										</td>
+										<td>{{record.Plan_Type}}</td>
+										<td>{{record.Transaction_Date}}</td>
+										<td>{{record.Amount}}</td>
+										<td>
+											{{record.Payment_Method}}
+										</td>
+										<td>
+											{{record.Start_Date}}
+										</td>
+										<td>{{record.End_Date}}</td>
+										<td>
+											<span class="badge {% if record.Status == 'Completed' %} badge-soft-success {% else %} badge-soft-warning {% endif %} d-inline-flex align-items-center"><i
+													class="ti ti-circle-filled fs-5 me-1"></i>{{record.Status}}</span>
+										</td>
+									</tr>
+                                    {% endfor %}
+								</tbody>
+							</table>
+						</div>
+						<!-- /Transaction List -->
+					</div>
+
+				</div>
+				<!-- /Filter Section -->
+
+			</div>
+		</div>
+		<!-- /Page Wrapper -->
+
+		<!-- Delete Modal -->
+		<div class="modal fade" id="delete-modal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<form action="membership-transactions">
+						<div class="modal-body text-center">
+							<span class="delete-icon">
+								<i class="ti ti-trash-x"></i>
+							</span>
+							<h4>Confirm Deletion</h4>
+							<p>You want to delete all the marked items, this cant be undone once you delete.</p>
+							<div class="d-flex justify-content-center">
+								<a href="javascript:void(0);" class="btn btn-light me-3"
+									data-bs-dismiss="modal">Cancel</a>
+								<button type="submit" class="btn btn-danger">Yes, Delete</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /Delete Modal -->
+
+{% endblock content %}
+    

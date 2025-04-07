@@ -1,2 +1,2 @@
 # 6pbs
-boarding school
+boarding school 

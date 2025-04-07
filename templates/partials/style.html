@@ -1,0 +1,149 @@
+{% load static %}
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+{% if request.path == '/layout-rtl' %}
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.rtl.min.css' %}">
+{% endif %}
+
+<!-- Feather CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/feather/feather.css' %}">
+
+<!-- Feathericon CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+<!-- Tabler Icon CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/tabler-icons/tabler-icons.css' %}">
+
+<!-- Daterangepikcer CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/daterangepicker/daterangepicker.css' %}">
+
+<!-- Summernote CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/summernote/summernote-lite.min.css' %}">
+
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+{% if request.path == '/teacher-dashboard' or request.path == '/notes' or request.path == '/file-manager' or request.path == '/student-dashboard' %}
+<!-- Owl carousel CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+{% endif %}
+
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/select2/css/select2.min.css' %}">
+
+<!-- animation CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+<!-- Summernote CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/summernote/summernote-bs4.min.css' %}">
+
+<!-- Mobile CSS-->
+<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/demo.css' %}">
+
+<!-- Boxicons CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/boxicons/css/boxicons.min.css' %}">
+
+<!-- Fancybox -->
+{% if request.path == '/chat' or request.path == '/plugins' %}
+<link rel="stylesheet" href="{% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %}">
+{% endif %}
+
+{% if request.path == '/chat' or request.path == '/plugins' or request.path == '/video-call' %}
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/swiper/swiper.min.css' %}">
+{% endif %}
+
+<!-- Datetimepicker CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+<!-- animation CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/lightbox/glightbox.min.css' %}">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/scrollbar/scroll.min.css' %}">
+
+<!-- Dragula CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/dragula/css/dragula.min.css' %}">
+
+<!-- Rangeslider CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/ion-rangeslider/css/ion.rangeSlider.min.css' %}">
+
+<!-- Sticky CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/stickynote/sticky.css' %}">
+
+{% if request.path == '/icon-pe7' %}
+<!-- Pe7 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/pe7/pe-icon-7.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-ionic' %}
+<!-- Ionic CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/ionic/ionicons.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-material' %}
+<!-- Material CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/material/materialdesignicons.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-simpleline' %}
+<!-- Material CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/simpleline/simple-line-icons.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-themify' %}
+<!-- Pe7 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/themify/themify.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-weather' %}
+<!-- Pe7 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/weather/weathericons.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-flag' %}
+<!-- Pe7 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/flags/flags.css' %}">
+{% endif %}
+
+{% if request.path == '/icon-typicon' %}
+<!-- Pe7 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/icons/typicons/typicons.css' %}">
+{% endif %}
+
+{% if request.path == '/form-wizard' %}
+<!-- Wizard CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/twitter-bootstrap-wizard/form-wizard.css' %}">
+{% endif %}
+
+{% if request.path == '/chart-c3' %}
+<!-- ChartC3 CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/c3-chart/c3.min.css' %}">
+{% endif %}
+
+<!-- Bootstrap Tagsinput CSS -->
+<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css' %}">
+
+{% if request.path == '/index' or request.path == '/layout-default' or request.path == '/layout-mini' or request.path == '/layout-rtl' or request.path == '/layout-box' or request.path == '/layout-dark' or request.path == '/video-call' %}
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/owlcarousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/owlcarousel/owl.theme.default.min.css' %}">
+{% endif %}
+
+{% if request.path == '/file-manager' %}
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="{% static 'assets/css/plyr.css' %}">
+{% endif %}
+
+<!-- Datatable CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/dataTables.bootstrap5.min.css' %}">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">

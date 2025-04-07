@@ -1,0 +1,6 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'storage' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'storage' %}active{% endif %}">Storage</a>
+    <a href="{% url 'ban_ip_address' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'ban_ip_address' %}active{% endif %}">Ban IP Address</a>
+  </div>
+</div>

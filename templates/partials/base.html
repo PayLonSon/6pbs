@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block head %}
+    {% include 'partials/head.html' %}
+  {% endblock %}
+
+  <body class="{% if request.path == '/chat' %} main-chat-blk {% elif request.path == '/layout-mini' %} mini-sidebar {% elif request.path == '/layout-rtl' %} layout-mode-rtl {% elif request.path == '/layout-box' %} layout-box-mode mini-sidebar {% else %} {% endif %}">
+    {% if request.path == '/index' or request.path == '/teacher-dashboard' or request.path == '/student-dashboard' or request.path == '/parent-dashboard' %}
+      <div id="global-loader">
+        <div class="page-loader"></div>
+      </div>
+    {% endif %}
+
+    <div class="main-wrapper">
+      {% block header %}
+        {% include 'partials/topbar.html' %}
+      {% endblock %}
+
+      {% block sidebar %}
+        {% include 'partials/sidebar.html' %}
+      {% endblock %}
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    {% block javascript %}
+      {% include 'partials/script.html' %}
+    {% endblock %}
+
+    
+    {% block themesettings %}
+      {% if "layout-rtl" not in request.path and "layout-default" not in request.path and "layout-mini" not in request.path and "layout-box" not in request.path and "layout-dark" not in request.path %}
+        {% include 'partials/theme-setting.html' %}
+      {% endif %}
+    {% endblock %}
+      
+  </body>
+</html>

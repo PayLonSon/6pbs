@@ -1,0 +1,6 @@
+<div class="col-xxl-2 col-xl-3">
+  <div class="pt-3 d-flex flex-column list-group mb-4">
+    <a href="{% url 'invoice_settings' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'invoice_settings' %}active{% endif %}">Invoice Settings</a>
+    <a href="{% url 'custom_fields' %}" class="d-block rounded p-2 {% if request.resolver_match.url_name == 'custom_fields' %}active{% endif %}">Custom Fields</a>
+  </div>
+</div>``

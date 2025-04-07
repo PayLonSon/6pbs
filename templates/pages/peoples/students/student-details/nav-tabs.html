@@ -1,0 +1,20 @@
+<ul class="nav nav-tabs nav-tabs-bottom mb-4">
+  <li>
+    <a href="{% url 'student_details' %}" class="nav-link {% if request.resolver_match.url_name == 'student_details' %}active{% endif %}"><i class="ti ti-school me-2"></i>Student Details</a>
+  </li>
+  <li>
+    <a href="{% url 'student_time_table' %}" class="nav-link {% if request.resolver_match.url_name == 'student_time_table' %}active{% endif %}"><i class="ti ti-table-options me-2"></i>Time Table</a>
+  </li>
+  <li>
+    <a href="{% url 'student_leaves' %}" class="nav-link {% if request.resolver_match.url_name == 'student_leaves' %}active{% endif %}"><i class="ti ti-calendar-due me-2"></i>Leave & Attendance</a>
+  </li>
+  <li>
+    <a href="{% url 'student_fees' %}" class="nav-link {% if request.resolver_match.url_name == 'student_fees' %}active{% endif %}"><i class="ti ti-report-money me-2"></i>Fees</a>
+  </li>
+  <li>
+    <a href="{% url 'student_result' %}" class="nav-link {% if request.resolver_match.url_name == 'student_result' %}active{% endif %}"><i class="ti ti-bookmark-edit me-2"></i>Exam & Results</a>
+  </li>
+  <li>
+    <a href="{% url 'student_library' %}" class="nav-link {% if request.resolver_match.url_name == 'student_library' %}active{% endif %}"><i class="ti ti-books me-2"></i>Library</a>
+  </li>
+</ul>

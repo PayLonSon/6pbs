@@ -1,0 +1,691 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+    <div class="content">
+      <div class="row">
+        <!-- Page Header -->
+        <div class="col-md-12">
+          <div class="d-md-flex d-block align-items-center justify-content-between mb-3">
+            {% block title %}
+              {% include 'partials/title.html' with title='Teacher Details' text='Dashboard' textone='Teachers' texttwo='Teacher Details' %}
+            {% endblock %}
+            <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+              <a href="#" class="btn btn-light me-2 mb-2" data-bs-toggle="modal" data-bs-target="#login_detail"><i class="ti ti-lock me-2"></i>Login Details</a>
+              <a href="{% url 'edit_teacher' %}" class="btn btn-primary d-flex align-items-center mb-2"><i class="ti ti-edit-circle me-2"></i>Edit Teacher</a>
+            </div>
+          </div>
+        </div>
+        <!-- /Page Header -->
+      </div>
+
+      <div class="row">
+        <!-- Teacher Information -->
+        {% block teachersidebar %}
+          {% include 'pages/peoples/teachers/teacher-details/teacher-sidebar.html' %}
+        {% endblock %}
+        <!-- /Teacher Information -->
+
+        <div class="col-xxl-9 col-xl-8">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- List -->
+              {% block teachernavtabs %}
+                {% include 'pages/peoples/teachers/teacher-details/teacher-nav-bar.html' %}
+              {% endblock %}
+              <!-- /List -->
+              <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-0">
+                  <h4 class="mb-3">Time Table</h4>
+                  <div class="d-flex align-items-center flex-wrap">
+                    <div class="dropdown mb-3">
+                      <a href="javascript:void(0);" class="btn btn-outline-light border-white bg-white dropdown-toggle shadow-md" data-bs-toggle="dropdown"><i class="ti ti-calendar-due me-2"></i>This Year</a>
+                      <ul class="dropdown-menu p-3">
+                        <li>
+                          <a href="javascript:void(0);" class="dropdown-item rounded-1">This Year</a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);" class="dropdown-item rounded-1">This Month</a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);" class="dropdown-item rounded-1">This Week</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-flex flex-nowrap overflow-auto">
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Monday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <span class="text-dark d-block py-2">Class : III, A</span>
+                        <span class="text-dark d-block pb-2">Subject : Spanish</span>
+                        <p class="text-dark">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : I, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:107</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : V, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Tuesday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:107</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : V, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : I, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Wednesday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Computer</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:00 - 09:45 AM
+                        </p>
+                      </div>
+
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : II, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Science</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 - 10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Maths</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Chemistry</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Physics</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>01:30 - 02:15 PM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:101</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Englishh</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Thursday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:00 - 09:45 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Physics</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 - 10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : II, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Science</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : I, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>01:30 - 02:15 PM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:101</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Chemistry</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Maths</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Friday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:107</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : V, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : I, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column me-4 flex-fill">
+                      <div class="mb-3">
+                        <h6>Saturday</h6>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:106</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>10:45 - 11:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:107</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : V, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : English</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>11:30 - 12:15 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : IV, B</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>02:15 - 03:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:108</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : I, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>03:15 - 04:00 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                      <div class="rounded p-3 mb-4 border">
+                        <div class="pb-3 border-bottom">
+                          <span class="text-danger badge bg-transparent-danger text-nowrap">Room No:104</span>
+                        </div>
+                        <p class="text-dark d-block py-2 m-0">Class : III, A</p>
+                        <p class="text-dark d-block pb-2 m-0">Subject : Spanish</p>
+                        <p class="text-dark text-nowrap m-0">
+                          <i class="ti ti-clock me-1"></i>09:45 -10:30 AM
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer border-0 pb-0">
+                  <div class="row">
+                    <div class="col-lg-4 col-xxl-4 col-xl-4 d-flex">
+                      <div class="card flex-fill">
+                        <div class="card-body bg-transparent-primary">
+                          <span class="bg-primary badge badge-sm mb-2">Morning Break</span>
+                          <p class="text-dark">
+                            <i class="ti ti-clock me-1"></i>10:30 to 10 :45 AM
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-xxl-3 d-flex">
+                      <div class="card flex-fill">
+                        <div class="card-body bg-transparent-warning">
+                          <span class="bg-warning badge badge-sm mb-2">Lunch</span>
+                          <p class="text-dark">
+                            <i class="ti ti-clock me-1"></i>10:30 to 10 :45 AM
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-xxl-3 d-flex">
+                      <div class="card flex-fill">
+                        <div class="card-body bg-transparent-info">
+                          <span class="bg-info badge badge-sm mb-2">Evening Break</span>
+                          <p class="text-dark">
+                            <i class="ti ti-clock me-1"></i>03:30 PM to 03:45 PM
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Apply Leave -->
+<div class="modal fade" id="apply_leave">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Apply Leave</h4>
+        <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <form action="{% url 'student_leaves' %}">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label class="form-label">Leave Date</label>
+                <div class="date-pic">
+                  <input type="text" class="form-control datetimepicker"
+                    placeholder="15 May 2024">
+                  <span class="cal-icon"><i class="ti ti-calendar"></i></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Leave Type</label>
+                <select class="select">
+                  <option>Select</option>
+                  <option>Medical Leave</option>
+                  <option>Casual Leave</option>
+                  <option>Special Leave</option>
+                  <option>Maternity Leave</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Leave From date</label>
+                <div class="date-pic">
+                  <input type="text" class="form-control datetimepicker"
+                    placeholder="15 May 2024">
+                  <span class="cal-icon"><i class="ti ti-calendar"></i></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Leave to Date</label>
+                <div class="date-pic">
+                  <input type="text" class="form-control datetimepicker"
+                    placeholder="15 May 2024">
+                  <span class="cal-icon"><i class="ti ti-calendar"></i></span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Leave Days</label>
+                <div class="d-flex align-items-center check-radio-group">
+                  <label class="custom-radio">
+                    <input type="radio" name="radio" checked="">
+                    <span class="checkmark"></span>
+                    Full day
+                  </label>
+                  <label class="custom-radio">
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                    First Half
+                  </label>
+                  <label class="custom-radio">
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                    Second Half
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">No of Days</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="mb-0">
+                <label class="form-label">Reason</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+          <button type="submit" class="btn btn-primary">Apply Leave</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Apply Leave -->
+
+<!-- Login Details -->
+<div class="modal fade" id="login_detail">
+  <div class="modal-dialog modal-dialog-centered  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Login Details</h4>
+        <button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="ti ti-x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="student-detail-info">
+          <span class="student-img"><img src="{% static 'assets/img/students/student-01.jpg' %}" alt="Img"></span>
+          <div class="name-info">
+            <h6>Janet <span>III, A</span></h6>
+          </div>
+        </div>
+        <div class="table-responsive custom-table no-datatable_length">
+          <table class="table datanew">
+            <thead class="thead-light">
+              <tr>
+                <th>User Type</th>
+                <th>User Name</th>
+                <th>Password </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Parent</td>
+                <td>parent53</td>
+                <td>parent@53</td>
+              </tr>
+              <tr>
+                <td>Student</td>
+                <td>student20</td>
+                <td>stdt@53</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Login Details -->
+
+{% endblock %}
